@@ -1,2 +1,2 @@
-# Opice
-RSP_Opice
+Projekt do RSP.
+Tým Opice.
