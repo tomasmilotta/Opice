@@ -1,1 +1,1 @@
-Projekt týmu Opice
+Projekt týmu Opice.
