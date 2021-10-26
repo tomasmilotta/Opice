@@ -1,1 +1,1 @@
-Zdrojové kódy projektu
+Zdrojové kódy projektu.
