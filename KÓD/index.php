@@ -8,7 +8,6 @@
   echo "<tr><th>ID</th><th>Jméno</th><th>Příjmení</th><th>Login</th><th>Role</th><th>E-mail</th></tr>";
   while($radek = mysqli_fetch_assoc($vysledek)){
     echo "<tr>";
-    //echo "ID: ".$radek["user_id"]." Jméno: ".$radek["user_name"]." Příjmení: ".$radek["user_sname"]." Login: ".$radek["user_sname"]." Role v systému: ".$radek["role_name"]." E-mail: ".$radek["user_email"]."<br>";
     echo "<td>".$radek['user_id']."</td>";
     echo "<td>".$radek['user_name']."</td>";
     echo "<td>".$radek['user_sname']."</td>";
