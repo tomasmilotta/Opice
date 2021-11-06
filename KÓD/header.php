@@ -22,7 +22,7 @@
           echo '<li>Heslo: <input type="password" name="pass"></li>';
           echo '<li><input type="submit" value="Přihlásit"></li>';
           echo '</form>';
-          echo '<li><a href="#">Registrace</a></li>'; //TODO: registrace uživatele (autora)
+          echo '<li><a href="registrace.php">Registrace</a></li>';
         }
        ?>
     </ul>

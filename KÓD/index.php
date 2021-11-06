@@ -7,6 +7,9 @@
   echo "<table border=1>";
   echo "<tr><th>ID</th><th>Jméno</th><th>Příjmení</th><th>Login</th><th>Role</th><th>E-mail</th></tr>";
   while($radek = mysqli_fetch_assoc($vysledek)){
+    $ukazheslo = $radek['user_login']."84oasů.f+A;Sa>wˇe8'(f4y6";
+    $heslo6 = hash("sha256",$ukazheslo);
+    echo $radek['user_login']."|".$heslo6."<br>";
     echo "<tr>";
     echo "<td>".$radek['user_id']."</td>";
     echo "<td>".$radek['user_name']."</td>";
