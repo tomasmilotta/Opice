@@ -11,7 +11,7 @@
     $cislo = $radek["count(*)"];
 
     if($cislo==1){
-      $dotaz = 'select * from users where user_login="'.$_GET["login"].'" and user_passwd="'.$heslo.'";';
+      $dotaz = 'select * from users join roles on roles.role_id = users.user_role where user_login="'.$_GET["login"].'" and user_passwd="'.$heslo.'";';
       $vysledek = mysqli_query($spojeni, $dotaz);
       $loguser = mysqli_fetch_assoc($vysledek);
       $_SESSION["user_id"]=$loguser["user_id"];
@@ -20,12 +20,12 @@
       $_SESSION["name"]=$loguser["user_name"];
       $_SESSION["sname"]=$loguser["user_sname"];
       $_SESSION["role"]=$loguser["user_role"];
+      $_SESSION["roleName"]=$loguser["role_name"];
       $_SESSION["email"]=$loguser["user_email"];
-      //echo $_SESSION["login"];
       header("location:index.php");
       exit;
     }else{
-      echo("Neplatné heslo<br>");
+      echo("Neplatné přihlašovací jméno nebo heslo!<br>");
       echo('<a href="index.php">Zkusit znovu</a>');
     }
   }
