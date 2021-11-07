@@ -3,15 +3,15 @@
   session_start();
   if(isset($_GET["login"]) && isset($_GET["pass"])){
     $pass = $_GET["pass"];
-    //TODO: zabezpečení hesla
-    //$heslo = ;
-    $dotaz = 'select count(*) from users where user_login="'.$_GET["login"].'" and user_passwd="'.$pass.'";';
+    $pass = $pass."84oasů.f+A;Sa>wˇe8'(f4y6";
+    $heslo = hash("sha256",$pass);
+    $dotaz = 'select count(*) from users where user_login="'.$_GET["login"].'" and user_passwd="'.$heslo.'";';
     $vysledek = mysqli_query($spojeni, $dotaz);
     $radek = mysqli_fetch_assoc($vysledek);
     $cislo = $radek["count(*)"];
 
     if($cislo==1){
-      $dotaz = 'select * from users where user_login="'.$_GET["login"].'" and user_passwd="'.$pass.'";';
+      $dotaz = 'select * from users where user_login="'.$_GET["login"].'" and user_passwd="'.$heslo.'";';
       $vysledek = mysqli_query($spojeni, $dotaz);
       $loguser = mysqli_fetch_assoc($vysledek);
       $_SESSION["user_id"]=$loguser["user_id"];
@@ -25,7 +25,8 @@
       header("location:index.php");
       exit;
     }else{
-      echo("Chyba při přihlášení");
+      echo("Neplatné heslo<br>");
+      echo('<a href="index.php">Zkusit znovu</a>');
     }
   }
  ?>
