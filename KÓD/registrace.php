@@ -51,7 +51,7 @@
             $dotaz = 'insert into users (user_name, user_sname, user_login, user_email, user_passwd) values("'.$_GET["jmeno"].'","'.$_GET["prijmeni"].'","'.$_GET["login"].'","'.$_GET["email"].'","'.$heslo.'");';
             $vysledek = mysqli_query($spojeni, $dotaz);
             if($vysledek){
-              $dotaz = 'select * from users where user_login="'.$_GET["login"].'" and user_passwd="'.$heslo.'";';
+              $dotaz = 'select * from users join roles on roles.role_id = users.user_role where user_login="'.$_GET["login"].'" and user_passwd="'.$heslo.'";';
               $vysledek = mysqli_query($spojeni, $dotaz);
               $loguser = mysqli_fetch_assoc($vysledek);
               $_SESSION["user_id"]=$loguser["user_id"];
@@ -60,6 +60,7 @@
               $_SESSION["name"]=$loguser["user_name"];
               $_SESSION["sname"]=$loguser["user_sname"];
               $_SESSION["role"]=$loguser["user_role"];
+              $_SESSION["roleName"]=$loguser["role_name"];
               $_SESSION["email"]=$loguser["user_email"];
               header("location:index.php");
               exit;
