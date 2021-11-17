@@ -17,7 +17,7 @@
       //výpis článků
       echo "<table border=1>";
       echo "<tr>";
-      echo "<th>ID</th><th>Název článku</th><th>Obsah článku</th><th>Stav článku</th><th>Verze článku</th><th>Zpráva od redaktora</th><th>Posudek recenzenta</th><th>Schválený</th><th>Vydaný</th><th>Číslo vydání</th>";
+      echo "<th>Název článku</th><th>Obsah článku</th><th>Stav článku</th><th>Verze článku</th><th>Zpráva od redaktora</th><th>Posudek recenzenta</th><th>Schválený</th><th>Vydaný</th><th>Číslo vydání</th><th>Reagovat</th>";
       $dotaz = "SELECT * FROM clanky join users on users.user_id=clanky.clanek_autor join stavy on stavy.stav_id=clanky.clanek_stav where user_id = ".$_SESSION['user_id'].";";
     }else{
       $dotaz = "SELECT * FROM clanky join users on users.user_id=clanky.clanek_autor join stavy on stavy.stav_id=clanky.clanek_stav order by clanek_stav";
@@ -30,9 +30,9 @@
     echo "</tr>";
     while($radek = mysqli_fetch_assoc($vysledek)){
       echo "<tr>";
-      echo "<td>".$radek['clanek_id']."</td>";
+      //echo "<td>".$radek['clanek_id']."</td>";
       echo "<td>".$radek['clanek_nazev']."</td>";
-      echo "<td>".$radek['clanek_obsah']."</td>";
+      echo '<td><a href="">'.$radek['clanek_obsah'].'</a></td>';//TODO: stažení souboru
       echo "<td>".$radek['stav_popis']."</td>";
       echo "<td align = center>".$radek['clanek_verze']."</td>";
       echo "<td>".$radek['clanek_zpravaRedaktora']."</td>";
@@ -57,6 +57,13 @@
         echo '<td><a href="">Vrátit autorovi</a></td>'; // TODO: odkaz na stránku, kde se bude měnit stav na "vrácen autorovi", bude se měnit zpráva od redaktora
         echo '<td><a href="">Posunout dále</a></td>'; // TODO: posouvá dále recenzentovi... změna stavu na "poslán recenzentovi"
       }
+      if($role==3){
+        if($radek['stav_id'] == 3){
+          echo '<td><a href="updateClanek.php?name='.$radek["clanek_nazev"].'">Reagovat</a></td>';
+        }else{
+          echo '<td>V pořádku</td>';
+        }
+      }
       echo "</tr>";
     }
     echo "</table>";
@@ -65,3 +72,6 @@
   }
 
  ?>
+ <?php
+ require "footer.php";
+  ?>
