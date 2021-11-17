@@ -30,7 +30,7 @@
     echo "</tr>";
     while($radek = mysqli_fetch_assoc($vysledek)){
       echo "<tr>";
-      //echo "<td>".$radek['clanek_id']."</td>";
+      if(isset($role) && $role!=3)echo "<td align = center>".$radek['clanek_id']."</td>";
       echo "<td>".$radek['clanek_nazev']."</td>";
       echo '<td><a href="">'.$radek['clanek_obsah'].'</a></td>';//TODO: stažení souboru
       echo "<td>".$radek['stav_popis']."</td>";
@@ -54,7 +54,11 @@
       echo "<td align = center>".$radek['clanek_vydani']."</td>";
       if($role == 2 || $role==6 || $role == 7){
         echo '<td><a href="">Upravit</a></td>'; // TODO: upravování článku: upravování stavu na "vydaný"nebo "schálen"
-        echo '<td><a href="">Vrátit autorovi</a></td>'; // TODO: odkaz na stránku, kde se bude měnit stav na "vrácen autorovi", bude se měnit zpráva od redaktora
+        if($radek['stav_id']==1){
+          echo '<td align=center><a href="">Vrátit autorovi</a></td>'; // TODO: odkaz na stránku, kde se bude měnit stav na "vrácen autorovi", bude se měnit zpráva od redaktora
+        }else{
+          echo '<td align=center>Vyřešeno</td>';
+        }
         echo '<td><a href="">Posunout dále</a></td>'; // TODO: posouvá dále recenzentovi... změna stavu na "poslán recenzentovi"
       }
       if($role==3){
