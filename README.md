@@ -1,1 +1,1 @@
-Dokumenty k projektu.
+Projekt týmu Opice.
