@@ -1,6 +1,6 @@
 <?php
   $title = "Přidání článku";
-  require "hlavicka.php";
+  require "header.php";
   require "connectDB.php";
   if(!isset($_SESSION["login"])){
       header("location:index.php");
@@ -30,5 +30,5 @@
    </table>
  </form>
  <?php
-  require "paticka.php";
+  require "footer.php";
   ?>
