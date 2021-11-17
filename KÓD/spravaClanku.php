@@ -1,6 +1,15 @@
 <?php
   require "header.php";
   require "connectDB.php";
+  if(isset($_SESSION['chyba'])){
+    if($_SESSION['chyba']==0){
+      echo "<script type='text/javascript'>alert('Úspěch!');</script>";
+      unset($_SESSION['chyba']);
+    }else{
+      echo "<script type='text/javascript'>alert('Chyba při nahrávání souboru!');</script>";
+      unset($_SESSION['chyba']);
+    }
+  }
   if(isset($_SESSION['role'])){
     $role = $_SESSION['role'];
     if($role==3){
@@ -8,7 +17,7 @@
       //výpis článků
       echo "<table border=1>";
       echo "<tr>";
-      echo "<th>ID</th><th>Název článku</th><th>Obsah článku</th><th>Stav článku</th><th>Verze článku</th><th>Zpráva od redaktora</th><th>Posudek recenzenta</th><th>Schválený</th><th>Vydaný</th>";
+      echo "<th>ID</th><th>Název článku</th><th>Obsah článku</th><th>Stav článku</th><th>Verze článku</th><th>Zpráva od redaktora</th><th>Posudek recenzenta</th><th>Schválený</th><th>Vydaný</th><th>Číslo vydání</th>";
       $dotaz = "SELECT * FROM clanky join users on users.user_id=clanky.clanek_autor join stavy on stavy.stav_id=clanky.clanek_stav where user_id = ".$_SESSION['user_id'].";";
     }else{
       $dotaz = "SELECT * FROM clanky join users on users.user_id=clanky.clanek_autor join stavy on stavy.stav_id=clanky.clanek_stav order by clanek_stav";
@@ -54,4 +63,5 @@
   }else{
     echo "<p>Nejste přihlášený!</p>";
   }
+
  ?>
