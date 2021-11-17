@@ -4,7 +4,7 @@
   if(isset($_SESSION['role'])){
     $role = $_SESSION['role'];
     if($role==3){
-      echo '<a href="">Přidat článek</a>';
+      echo '<a href="pridatClanek.php">Přidat článek</a>';
       //výpis článků
       echo "<table border=1>";
       echo "<tr>";

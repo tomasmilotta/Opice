@@ -6,7 +6,7 @@
     <?php
     session_start();
     ?>
-    <title><?php echo (isset($title))?$title:"Logos Polytechnikos"?></title>
+    <title><?php echo (isset($title))?$title:"Zelené Levo"?></title>
     <link rel="stylesheet" href="/css/style.css" type="text/css">
   </head>
   <body>
