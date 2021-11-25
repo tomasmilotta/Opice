@@ -1,0 +1,1 @@
+Záloha databáze.
