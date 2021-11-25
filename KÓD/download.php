@@ -6,6 +6,7 @@
 
   if(!file_exists($file)){
     die ('soubor neexistuje');
+    header("location:spravaClanku.php");
   }else{
     header("Cache-Control: public");
     header("Content-Description: File Transfer");
