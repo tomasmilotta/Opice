@@ -1,2 +1,2 @@
-Projekt týmu Opice.
-při stahování projektu je nutno stáhnout aktuální verzi záznamů databáze.
+Projekt týmu Opice. 
+Při stahování projektu je nutno stáhnout aktuální verzi záznamů databáze.
