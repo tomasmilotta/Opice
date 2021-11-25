@@ -52,7 +52,6 @@
         }
         closedir($handle);
       }
-      //TODO: stažení souboru
       echo "<td>".$radek['stav_popis']."</td>";
       echo "<td align = center>".$radek['clanek_verze']."</td>";
       echo "<td>".$radek['clanek_zpravaRedaktora']."</td>";
