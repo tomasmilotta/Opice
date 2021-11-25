@@ -17,19 +17,19 @@
  <form action="deleteUzivatel.php" method="post">
    <table>
      <tr>
-       <td>ID</td><td><input type="text" name="id" value="<?php echo $id;?>"></td>
+       <td>ID</td><td><input type="text" name="id" value="<?php echo $id;?>" readonly></td>
      </tr>
      <tr>
-       <td>Jméno</td><td><input type="text" value="<?php echo $jmeno;?>"></td>
+       <td>Jméno</td><td><input type="text" value="<?php echo $jmeno;?>" readonly></td>
      </tr>
      <tr>
-       <td>Příjmení</td><td><input type="text" value="<?php echo $prijmeni;?>"></td>
+       <td>Příjmení</td><td><input type="text" value="<?php echo $prijmeni;?>" readonly></td>
      </tr>
      <tr>
-       <td>Login</td><td><input type="text" value="<?php echo $login;?>"></td>
+       <td>Login</td><td><input type="text" value="<?php echo $login;?>" readonly></td>
      </tr>
      <tr>
-       <td>E-mail</td><td><input type="text" value="<?php echo $email;?>"></td>
+       <td>E-mail</td><td><input type="text" value="<?php echo $email;?>" readonly></td>
      </tr>
      <tr>
        <td colspan="2" align="center">Opravdu chcete smazat uživatele?</td>

@@ -1,6 +1,7 @@
 <?php
   require "header.php";
   require "connectDB.php";
+  if(!isset($_SESSION["role"])||$_SESSION["role"]!=2) header("location:index.php");
   $dotaz = "select * from users join roles on users.user_role = roles.role_id";
   $vysledek = mysqli_query($spojeni, $dotaz);
   echo "<table border=1>";
