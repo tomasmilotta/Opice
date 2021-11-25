@@ -14,7 +14,7 @@
     $autor = $radek["user_name"].' '.$radek["user_sname"];
   }
  ?>
- <form action="reakce.php" method="post">
+ <form action="reakceDale.php" method="post">
    <input type="hidden" name="id" value="<?php echo $id;?>">
    <table border="1">
      <tr>
@@ -27,7 +27,7 @@
        <td>Verze článku</td><td><input type="text" value="<?php echo $verze;?>" readonly></td>
      </tr>
      <tr>
-       <td>Zpráva pro autora</td><td><textarea name="zprava" rows="10" cols="40" required></textarea></td>
+       <td>Zpráva</td><td><textarea name="zprava" rows="10" cols="40" required></textarea></td>
      </tr>
      <tr>
        <td colspan="2" align="center"><input style="width:90%;" type="submit" name="submit"></td>
@@ -36,11 +36,7 @@
  </form>
  <?php
  if(isset($_POST['submit'])){
-   if($role!=4){
-     $dotaz = 'update clanky set clanek_stav=3, clanek_zpravaRedaktora = "'.$_POST["zprava"].'" where clanek_id = '.$_POST["id"].';';
-   }else{
-     $dotaz = 'update clanky set clanek_stav=3, clanek_zpravaRecenzenta = "'.$_POST["zprava"].'" where clanek_id = '.$_POST["id"].';';
-   }
+   $dotaz = 'update clanky set clanek_stav=2, clanek_zpravaRedaktora = "'.$_POST["zprava"].'" where clanek_id = '.$_POST["id"].';';
    if(mysqli_query($spojeni, $dotaz)){
      header("location:spravaClanku.php");
    }
