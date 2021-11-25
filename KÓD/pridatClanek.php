@@ -56,7 +56,7 @@
     }else{
       $verze = 1;
       $name =  $_FILES['file']['name'];
-      $targetDir = "clanky/".$login."/".str_replace(" ","",$nazev)."/v".$verze."/";
+      $targetDir = "clanky/".$login."/".str_replace(" ","_",$nazev)."/v".$verze."/";
       if (!file_exists($targetDir)) {
         mkdir($targetDir, 0777, true);
       }

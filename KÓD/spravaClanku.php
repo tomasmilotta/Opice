@@ -49,7 +49,7 @@
       if(isset($role) && $role!=3)echo "<td align = center>".$radek['clanek_id']."</td>";
       echo "<td>".$radek['clanek_nazev']."</td>";
       echo "<td>".$radek['user_login']."</td>";
-      $path = "clanky/".$radek["user_login"]."/".str_replace(" ","",$radek["clanek_nazev"])."/v".$radek["clanek_verze"]."/";
+      $path = "clanky/".$radek["user_login"]."/".str_replace(" ","_",$radek["clanek_nazev"])."/v".$radek["clanek_verze"]."/";
       if($handle = opendir($path)){
         while(false != ($entry = readdir($handle))){
           if($entry != "." && $entry != ".."){
