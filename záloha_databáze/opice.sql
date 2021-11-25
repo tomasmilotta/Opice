@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Počítač: 127.0.0.1
--- Vytvořeno: Čtv 25. lis 2021, 14:36
+-- Vytvořeno: Čtv 25. lis 2021, 15:56
 -- Verze serveru: 10.4.21-MariaDB
 -- Verze PHP: 8.0.12
 
@@ -47,16 +47,12 @@ CREATE TABLE `clanky` (
 --
 
 INSERT INTO `clanky` (`clanek_id`, `clanek_autor`, `clanek_nazev`, `clanek_obsah`, `clanek_vydany`, `clanek_schvaleny`, `clanek_stav`, `clanek_verze`, `clanek_vydani`, `clanek_zpravaRedaktora`, `clanek_zpravaSefredaktora`, `clanek_zpravaRecenzenta`) VALUES
-(1, 13, 'Název článku', 'Obsah článku', b'0', b'0', 1, 3, NULL, 'Zatím bez posudku', NULL, 'Zatím bez posudku'),
-(2, 16, 'Název článku - Kočí', 'Obsah článku - Kočí', b'0', b'0', 3, 3, NULL, 'Zatím bez posudku', NULL, 'Zatím bez posudku'),
-(3, 13, 'Název článku - Brož', 'Obsah článku - Brož', b'1', b'1', 4, 3, 1, 'V pořádku', NULL, 'V pořádku'),
-(4, 15, 'Název článku - Hanek', 'Obsah článku - Hanek', b'0', b'0', 1, 3, NULL, 'Zatím bez posudku', NULL, 'Zatím bez posudku'),
-(8, 13, 'Clanek 2', 'clanek 2', b'0', b'0', 1, 3, NULL, 'Zatím bez posudku', NULL, 'Zatím bez posudku'),
-(9, 13, 'Clanek 1 ', 'posudek (1).pdf', b'0', b'0', 1, 4, NULL, 'Zatím bez posudku', NULL, 'Zatím bez posudku'),
-(10, 13, 'Clanek 3', 'LP_1_2021.pdf', b'0', b'0', 1, 3, NULL, 'Zatím bez posudku', NULL, 'Zatím bez posudku'),
-(11, 13, 'Clanek 4', 'LP_1_2021.pdf', b'0', b'0', 1, 4, NULL, 'Zatím bez posudku', NULL, 'Zatím bez posudku'),
-(12, 17, 'Novák - článek', 'Francouzská-revoluce-2.docx', b'0', b'0', 3, 2, NULL, 'Je potřeba upravit gramatiku', NULL, 'Zatím bez posudku'),
-(13, 13, 'test', 'LP_1_2021.pdf', b'0', b'0', 1, 2, NULL, 'Zatím bez posudku', NULL, 'Zatím bez posudku');
+(16, 13, 'Článek 1', 'Francouzská-revoluce-2.docx', b'0', b'0', 3, 1, NULL, 'Nedostatečné', NULL, 'Zatím bez posudku'),
+(17, 13, 'Článek 2', 'Francouzská-revoluce-2.docx', b'1', b'1', 5, 1, 1, 'Zatím bez posudku', NULL, 'Zatím bez posudku'),
+(18, 13, 'Článek 3', 'Francouzská-revoluce-2.docx', b'0', b'0', 1, 1, NULL, 'Zatím bez posudku', NULL, 'Zatím bez posudku'),
+(19, 16, 'Francouzská revoluce', 'Francouzská-revoluce-2.docx', b'0', b'0', 1, 2, NULL, 'Zatím bez posudku', NULL, 'Zatím bez posudku'),
+(20, 15, 'Šachy', 'cv5 (3).docx', b'0', b'0', 3, 1, NULL, 'Nedostatečné', NULL, 'Zatím bez posudku'),
+(21, 17, 'Release 1', 'predn6-2-2021 (1).docx', b'0', b'0', 1, 1, NULL, 'Zatím bez posudku', NULL, 'Zatím bez posudku');
 
 -- --------------------------------------------------------
 
@@ -195,7 +191,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pro tabulku `clanky`
 --
 ALTER TABLE `clanky`
-  MODIFY `clanek_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `clanek_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT pro tabulku `roles`
