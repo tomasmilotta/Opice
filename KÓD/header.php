@@ -25,8 +25,11 @@
           echo '<li><a href="logout.php">Odhlásit se</li></a>';
           if($_SESSION["role"]==3){
             echo('<li><a href="spravaClanku.php">Správa mých článků</a></li>');
-          }else if($role==2 || $role == 6 || $role==7){
+          }else if($role == 2 || $role == 6 || $role == 7){
             echo('<li><a href="spravaClanku.php">Správa článků</a></li>');
+          }
+          if($role == 2){
+            echo('<li><a href="spravaUzivatelu.php">Správa uživatelů</a></li>');
           }
         }else{
           echo '<form action="login.php" method="get">';

@@ -55,7 +55,7 @@
       if($role == 2 || $role==6 || $role == 7){
         echo '<td><a href="">Upravit</a></td>'; // TODO: upravování článku: upravování stavu na "vydaný"nebo "schálen"
         if($radek['stav_id']==1){
-          echo '<td align=center><a href="">Vrátit autorovi</a></td>'; // TODO: odkaz na stránku, kde se bude měnit stav na "vrácen autorovi", bude se měnit zpráva od redaktora
+          echo '<td align=center><a href="reakce.php?id='.$radek["clanek_id"].'">Vrátit autorovi</a></td>'; // TODO: odkaz na stránku, kde se bude měnit stav na "vrácen autorovi", bude se měnit zpráva od redaktora
         }else{
           echo '<td align=center>Vyřešeno</td>';
         }
