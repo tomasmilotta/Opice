@@ -53,6 +53,7 @@
           echo "<ul class='dropdown-menu' id='logged'>";
           echo '<li class="nav-item px-1 d-flex justify-content-center fw-bold">'.$_SESSION["name"].' '.$_SESSION["sname"].' </li><li class="nav-item px-1"> Login: '.$_SESSION["login"].' </li><li class="nav-item px-1"> Role: '.$_SESSION["roleName"].'</li>';
           echo '<li class="nav-item  d-flex justify-content-center py-2"><a id="unlog" class="nav-link black-text btn fw-bold btn-outline-light" href="logout.php" role="button">Odhlásit se</li></a>';
+
         }else{
           echo "<ul class='dropdown-menu' id='unlogged'>";
           echo '<form  class="px-2 py-2" action="login.php" method="get">';
