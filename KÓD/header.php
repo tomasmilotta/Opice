@@ -35,18 +35,18 @@
               $role = $_SESSION["role"];
               if($_SESSION["role"]==3){
                 echo('<li class="nav-item"><a class="nav-link"  href="spravaClanku.php">Správa mých článků</a></li>');
-              }else if($role==2 || $role == 6 || $role==7){
+              }else if($role==2 || $role == 6 || $role==7 || $role==4){
                 echo('<li class="nav-item"><a class="nav-link"  href="spravaClanku.php">Správa článků</a></li>');
               }
               if($role == 2){
                 echo('<li class="nav-item"><a class="nav-link"  href="spravaUzivatelu.php">Správa uživatelů</a></li>');
               }
-            } 
+            }
         ?>
       </ul>
         <ul class="navbar-nav">
-        <li class="nav-item dropstart">    
-          <img class="nav-link dropdown-toggle" id="user"  data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false" src="img/user.png" height="58">         
+        <li class="nav-item dropstart">
+          <img class="nav-link dropdown-toggle" id="user"  data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false" src="img/user.png" height="58">
           <?php
         if(isset($_SESSION["login"])){
           $role = $_SESSION["role"];
@@ -61,12 +61,12 @@
           echo '<li class="nav-item">Heslo: <input class="form-control" type="password" name="pass"></li>';
           echo '<li class="nav-item py-2"><input class="form-control fw-bold btn-outline-light" id="log-but" type="submit" value="Přihlásit"></li>';
           echo '<li class="nav-item d-flex justify-content-center"><a class="nav-link" id="regi" href="registrace.php">Registrace</a></li>';
-          echo '</form>';         
+          echo '</form>';
         }
        ?>
           </ul>
-        </li>       
-        </ul>   
+        </li>
+        </ul>
     </div>
   </div>
 </nav>
