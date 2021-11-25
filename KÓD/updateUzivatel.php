@@ -41,6 +41,7 @@
        <td>
          <select name="role">
            <?php
+           //cyklus vypisuje role z databáze a vybere primární roli vybraného uživatele
             while($roles = mysqli_fetch_assoc($vysledek2)){
               if($roles["role_id"]==$cisloRole){
                 echo '<option value="'.$roles["role_id"].'" selected>'.$roles["role_name"].'</option>';
