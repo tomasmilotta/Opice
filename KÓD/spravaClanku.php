@@ -29,7 +29,7 @@
       //výpis článků
       echo "<table class='w-100 sprava-tab'>";
       echo "<tr>";
-      echo "<th>ID</th><th>Název článku</th><th>Obsah článku</th><th>Stav článku</th><th>Verze článku</th><th>Zpráva od redaktora</th><th>Posudek recenzenta</th><th>Schválený</th><th>Vydaný</th><th>Číslo vydání</th><th></th><th></th><th></th>";
+      echo "<th>ID</th><th>Název článku</th><th>Autor</th><th>Obsah článku</th><th>Stav článku</th><th>Verze článku</th><th>Zpráva od redaktora</th><th>Posudek recenzenta</th><th>Schválený</th><th>Vydaný</th><th>Číslo vydání</th><th></th><th></th><th></th>";
     }
     $vysledek = mysqli_query($spojeni, $dotaz);
     echo "</tr>";
@@ -42,7 +42,16 @@
       else echo "<tr class='radek radek-clanky'>";
       if(isset($role) && $role!=3)echo "<td align = center>".$radek['clanek_id']."</td>";
       echo "<td>".$radek['clanek_nazev']."</td>";
-      echo '<td><a href="">&#128190; Stáhnout</a></td>';//TODO: stažení souboru
+      echo "<td>".$radek['user_name']." ".$radek['user_sname']."</td>";
+      $path = "clanky/".$radek["user_login"]."/".str_replace(" ","",$radek["clanek_nazev"])."/v".$radek["clanek_verze"]."/";
+      if($handle = opendir($path)){
+        while(false != ($entry = readdir($handle))){
+          if($entry != "." && $entry != ".."){
+            echo '<td><a href="download.php?file='.$entry.'&path='.$path.'&autor='.$radek["user_login"].'">&#128190; Stáhnout</a></td>';
+          }
+        }
+        closedir($handle);
+      }
       echo "<td>".$radek['stav_popis']."</td>";
       echo "<td align = center>".$radek['clanek_verze']."</td>";
       echo "<td>".$radek['clanek_zpravaRedaktora']."</td>";

@@ -17,7 +17,7 @@
   echo $verze;
   echo $nazev;
   $name =  $_FILES['file']['name'];
-  $targetDir = "clanky/".$login."/".$nazev."/v".$verze."/";
+  $targetDir = "clanky/".$login."/".str_replace(" ","",$nazev)."/v".$verze."/";
   echo $targetDir;
   if (!file_exists($targetDir)) {
     mkdir($targetDir, 0777, true);
