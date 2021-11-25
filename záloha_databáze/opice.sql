@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Počítač: 127.0.0.1
--- Vytvořeno: Čtv 25. lis 2021, 15:56
+-- Vytvořeno: Čtv 25. lis 2021, 22:00
 -- Verze serveru: 10.4.21-MariaDB
 -- Verze PHP: 8.0.12
 
@@ -47,12 +47,12 @@ CREATE TABLE `clanky` (
 --
 
 INSERT INTO `clanky` (`clanek_id`, `clanek_autor`, `clanek_nazev`, `clanek_obsah`, `clanek_vydany`, `clanek_schvaleny`, `clanek_stav`, `clanek_verze`, `clanek_vydani`, `clanek_zpravaRedaktora`, `clanek_zpravaSefredaktora`, `clanek_zpravaRecenzenta`) VALUES
-(16, 13, 'Článek 1', 'Francouzská-revoluce-2.docx', b'0', b'0', 3, 1, NULL, 'Nedostatečné', NULL, 'Zatím bez posudku'),
+(16, 13, 'Článek 1', 'Francouzská-revoluce-2.docx', b'0', b'0', 1, 1, NULL, 'Nedostatečné', '', 'Dostatečné'),
 (17, 13, 'Článek 2', 'Francouzská-revoluce-2.docx', b'1', b'1', 5, 1, 1, 'Zatím bez posudku', NULL, 'Zatím bez posudku'),
-(18, 13, 'Článek 3', 'Francouzská-revoluce-2.docx', b'0', b'0', 1, 1, NULL, 'Zatím bez posudku', NULL, 'Zatím bez posudku'),
-(19, 16, 'Francouzská revoluce', 'Francouzská-revoluce-2.docx', b'0', b'0', 1, 2, NULL, 'Zatím bez posudku', NULL, 'Zatím bez posudku'),
-(20, 15, 'Šachy', 'cv5 (3).docx', b'0', b'0', 3, 1, NULL, 'Nedostatečné', NULL, 'Zatím bez posudku'),
-(21, 17, 'Release 1', 'predn6-2-2021 (1).docx', b'0', b'0', 1, 1, NULL, 'Zatím bez posudku', NULL, 'Zatím bez posudku');
+(18, 13, 'Článek 3', 'Francouzská-revoluce-2.docx', b'0', b'1', 4, 1, NULL, 'V pořádku', 'V pořádku', 'V pořádku'),
+(19, 16, 'Francouzská revoluce', 'Francouzská-revoluce-2.docx', b'0', b'0', 2, 2, NULL, 'Dostatečné', NULL, 'Zatím bez posudku'),
+(20, 15, 'Šachy', 'cv5 (3).docx', b'1', b'1', 5, 1, 1, 'Dobré', '', 'Dobré'),
+(21, 17, 'Release 1', 'predn6-2-2021 (1).docx', b'0', b'0', 2, 1, NULL, 'hh', '', 'dobré');
 
 -- --------------------------------------------------------
 
