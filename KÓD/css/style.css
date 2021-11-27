@@ -1,3 +1,7 @@
+:root {
+    --zelena: #00FF99;
+  }
+
 body{
     font-family: 'Cerebri Sans',sans-serif !important;
     font-size: 1rem !important;
@@ -5,7 +9,7 @@ body{
 }
 
 #navik{
-    background-color: #00FF99 !important;
+    background-color: var(--zelena) !important;
     margin-bottom: 25px !important;
 }
 .navbar-light .navbar-nav .nav-link 
@@ -25,18 +29,18 @@ body{
 #unlogged {
     width: 300px !important;
     height: 240px !important;
-    border: 2px solid #00FF99;
+    border: 2px solid var(--zelena);
     border-radius: 0%;
 }
 #logged
 {
     width: 200px !important;
-    border: 2px solid #00FF99;
+    border: 2px solid var(--zelena);
     border-radius: 0%;
 }
 #log-but ,#unlog
 {
-    background-color: #00FF99 !important;
+    background-color: var(--zelena) !important;
     border: 0px;
     color: white !important;
 }
@@ -56,15 +60,15 @@ input[type="search"]:focus,
 input[type="tel"]:focus,
 input[type="color"]:focus,
 .uneditable-input:focus {   
-  border-color: #00FF99;
-  box-shadow: 0 1px 1px #00FF99 inset, 0 0 8px #00FF99;
+  border-color: var(--zelena);
+  box-shadow: 0 1px 1px var(--zelena) inset, 0 0 8px var(--zelena);
   outline: 0 none;
 }
 .btn:focus,.btn:active {
     outline: none !important;
     box-shadow: none !important;
-    border-color: #00FF99 !important;
-    box-shadow: 0 1px 1px #00FF99 inset, 0 0 8px #00FF99 !important;
+    border-color: var(--zelena) !important;
+    box-shadow: 0 1px 1px var(--zelena) inset, 0 0 8px var(--zelena) !important;
  }
  .btn.active.focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn:active:focus, .btn:focus {
     outline: 0 !important;
@@ -84,9 +88,21 @@ table {
     text-decoration: none !important;
 }
 .sprava-tab .btn{
-    background-color: #00FF99 !important;
+    background-color: var(--zelena) !important;
     border: 0px;
     color: white !important;
     padding-right: 6px !important;
     padding-left: 6px !important;
+}
+#footer{
+    position: relative;
+    width: 100%;
+    color: white;
+    padding-top: 10px;
+    background-color: var(--zelena) !important;
+    bottom: 0 !important;
+}
+#madeby{
+    text-align: center;
+    vertical-align: bottom;
 }
