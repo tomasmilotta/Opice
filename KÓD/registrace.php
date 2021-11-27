@@ -3,31 +3,37 @@
   require "header.php";
   require "connectDB.php";
  ?>
+ 
  <form action="registrace.php" method="get">
-   <table border = 1>
+ <div class="d-flex justify-content-center mb-3">
+   <div class="d-inline-flex" id="reg">
+    <table border = 1 align=center>
      <tr>
-       <td>Jméno</td><td><input type="text" name="jmeno" required></td>
+       <td>Jméno</td><td><input class="form-control" type="text" name="jmeno" required></td>
      </tr>
      <tr>
-       <td>Příjmení</td><td><input type="text" name="prijmeni" required></td>
+       <td>Příjmení</td><td><input class="form-control" type="text" name="prijmeni" required></td>
      </tr>
      <tr>
-       <td>Přihlašovací jméno</td><td><input type="text" name="login" required></td>
+       <td>Přihlašovací jméno</td><td><input class="form-control" type="text" name="login" required></td>
      </tr>
      <tr>
-       <td>E-mail</td><td><input type="email" name="email" required></td>
+       <td>E-mail</td><td><input class="form-control" type="email" name="email" required></td>
      </tr>
      <tr>
-       <td>Heslo</td><td><input type="password" name="heslo1" required></td>
+       <td>Heslo</td><td><input class="form-control" type="password" name="heslo1" required></td>
      </tr>
      <tr>
-       <td>Heslo znovu</td><td><input type="password" name="heslo2" required></td>
+       <td>Heslo znovu</td><td><input class="form-control" type="password" name="heslo2" required></td>
      </tr>
      <tr>
-       <td colspan="2" align=center><input style="width:90%" type="submit" name="odeslat" value="Zaregistrovat"></td>
+       <td colspan="2" align=center style="padding-top:20px" ><input style="width:90%" type="submit" name="odeslat" value="Zaregistrovat" id="reg-but"></td>
      </tr>
    </table>
+   </div>
+   </div>
  </form>
+
 <?php
   if(isset($_GET['odeslat'])){
     $vzor = "/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/";
@@ -62,22 +68,43 @@
               $_SESSION["role"]=$loguser["user_role"];
               $_SESSION["roleName"]=$loguser["role_name"];
               $_SESSION["email"]=$loguser["user_email"];
+              $_SESSION['msg2']="Uspěšně zaregistrován";
               header("location:index.php");
               exit;
             }else{
-                echo "Chyba registrace";
+                echo '<div class="d-flex justify-content-center">
+                <div class="alert alert-danger" role="alert">
+                      Chyba registrace!
+                </div>      
+              </div>';
             }
           }else{
-            echo "Hesla se neshodují.";
+            echo '<div class="d-flex justify-content-center">
+                <div class="alert alert-danger" role="alert">
+                  Hesla se neshodují!
+                </div>      
+              </div>';
           }
         }else{
-          echo "E-mail je použitý.";
+          echo '<div class="d-flex justify-content-center">
+          <div class="alert alert-danger" role="alert">
+              Email je použitý!
+          </div>      
+        </div>';
         }
       }else{
-        echo "Přihlašovací jméno je již zabrané.";
+        echo '<div class="d-flex justify-content-center">
+        <div class="alert alert-danger" role="alert">
+        Přihlašovací jméno je již zabrané!
+        </div>      
+      </div>';
       }
     }else{
-      echo "Neplatný formát emailu!";
+      echo '<div class="d-flex justify-content-center">
+      <div class="alert alert-danger" role="alert">
+      Neplatný formát emailu!
+      </div>      
+    </div>';
     }
   }
 ?>
