@@ -14,25 +14,30 @@
     $autor = $radek["user_name"].' '.$radek["user_sname"];
   }
  ?>
+ <h3 align="center">Vrátit autorovi</h3>
  <form action="reakce.php" method="post">
+ <div class="d-flex justify-content-center mb-3">
+     <div class="d-inline-flex" id="reg">
    <input type="hidden" name="id" value="<?php echo $id;?>">
    <table border="1">
      <tr>
-       <td>Název článku</td><td><input type="text" value="<?php echo $nazev;?>" readonly></td>
+       <td>Název článku</td><td><input type="text" value="<?php echo $nazev;?>" readonly class="form-control"></td>
      </tr>
      <tr>
-       <td>Autor</td><td><input type="text" value="<?php echo $autor;?>" readonly></td>
+       <td>Autor</td><td><input type="text" value="<?php echo $autor;?>" readonly class="form-control"></td>
      </tr>
      <tr>
-       <td>Verze článku</td><td><input type="text" value="<?php echo $verze;?>" readonly></td>
+       <td>Verze článku</td><td><input type="text" value="<?php echo $verze;?>" readonly class="form-control"></td>
      </tr>
      <tr>
-       <td>Zpráva pro autora</td><td><textarea name="zprava" rows="10" cols="40" required></textarea></td>
+       <td>Zpráva pro autora</td><td><textarea name="zprava" rows="10" cols="40" required class="form-control"></textarea></td>
      </tr>
      <tr>
-       <td colspan="2" align="center"><input style="width:90%;" type="submit" name="submit"></td>
+       <td colspan="2" align="center"><input style="width:90%;" type="submit" name="submit" id="reg-but"></td>
      </tr>
    </table>
+</div>
+</div>
  </form>
  <?php
  if(isset($_POST['submit'])){

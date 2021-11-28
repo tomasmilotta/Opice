@@ -15,7 +15,10 @@
     //header("location:spravaUzivatelu.php");
   }
  ?>
+ <h3 align="center">Mazání uživatele</h3>
  <form action="deleteUzivatel.php" method="post">
+ <div class="d-flex justify-content-center mb-3">
+     <div class="d-inline-flex" id="reg">
    <table>
      <tr>
        <td>ID</td><td><input type="text" name="id" value="<?php echo $id;?>" readonly></td>
@@ -36,9 +39,11 @@
        <td colspan="2" align="center">Opravdu chcete smazat uživatele?</td>
      </tr>
      <tr>
-       <td><input type="submit" name="smazat" value="Ano"></td><td><input type="submit" name="smazat" value="Ne"></td>
+       <td colspan="2" align="center"><input type="submit" name="smazat" value="Ano">&nbsp;<input type="submit" name="smazat" value="Ne"></td>
      </tr>
    </table>
+</div>
+</div>
  </form>
  <?php
  if(isset($_POST["smazat"])){
