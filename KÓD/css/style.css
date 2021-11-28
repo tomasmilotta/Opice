@@ -1,5 +1,5 @@
 :root {
-    --zelena: #00FF99;
+    --zelena: #00CC7A;
   }
 
 body{
@@ -7,7 +7,6 @@ body{
     font-size: 1rem !important;
     font-weight: 400 !important;
 }
-
 #navik{
     background-color: var(--zelena) !important;
     margin-bottom: 25px !important;
@@ -100,15 +99,27 @@ table {
     border: 2px solid var(--zelena);
     border-radius: 15px;
 }
-#footer{
-    position: relative;
-    width: 100%;
-    color: white;
-    padding-top: 10px;
+.footer{
+    /*position: relative !important;*/
+    width: 100% !important;
+    color: white !important;
+    padding-top: 10px !important;
     background-color: var(--zelena) !important;
-    bottom: 0 !important;
+    /*bottom: 0 !important;*/
 }
 #madeby{
     text-align: center;
     vertical-align: bottom;
+}
+html, body {
+    height: 100%;
+    margin: 0;
+  }
+.wrapper {
+    min-height: 100%;
+  
+    margin-bottom: -85px;
+}
+.footer, .push {
+  height: 85px;
 }

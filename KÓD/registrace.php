@@ -68,7 +68,7 @@
               $_SESSION["role"]=$loguser["user_role"];
               $_SESSION["roleName"]=$loguser["role_name"];
               $_SESSION["email"]=$loguser["user_email"];
-              $_SESSION['msg2']="Uspěšně zaregistrován";
+              $_SESSION['msg-good']="Uspěšně zaregistrován";
               header("location:index.php");
               exit;
             }else{
