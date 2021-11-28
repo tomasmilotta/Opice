@@ -22,11 +22,12 @@
       $_SESSION["role"]=$loguser["user_role"];
       $_SESSION["roleName"]=$loguser["role_name"];
       $_SESSION["email"]=$loguser["user_email"];
+      $_SESSION['msg-good']="Úspěšně přihlášen";
       header("location:index.php");
       exit;
     }else{
-      echo("Neplatné přihlašovací jméno nebo heslo!<br>");
-      echo('<a href="index.php">Zkusit znovu</a>');
+      $_SESSION['msg-bad']="Špatný login nebo heslo";
+      header("location:index.php");
     }
   }
  ?>

@@ -70,3 +70,28 @@
     </div>
   </div>
 </nav>
+<?php
+          if(isset($_SESSION["msg-bad"])){
+            echo '
+            <div class="d-flex justify-content-center">
+                  <div class="alert alert-danger" role="alert">
+                  '.$_SESSION["msg-bad"].'
+                  </div>      
+                </div>
+            ';
+            $_SESSION['msg-bad']=NULL;
+          }
+          if(isset($_SESSION["msg-good"])){
+            echo '
+            <div class="d-flex justify-content-center">
+                  <div class="alert alert-success" role="alert">
+                  '.$_SESSION["msg-good"].'
+                  </div>      
+                </div>
+            ';
+            $_SESSION['msg-good']=NULL;
+          }
+?>   
+
+
+
