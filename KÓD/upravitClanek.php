@@ -18,21 +18,23 @@
   $vysledek2 = mysqli_query($spojeni, $dotaz2);
   $radek = mysqli_fetch_assoc($vysledek);
  ?>
-
+<h3 align=center>Úprava článku</h3>
 <form action="upravitClanek.php" method="get">
+<div class="d-flex justify-content-center mb-3">
+     <div class="d-inline-flex" id="reg">
   <table>
     <tr>
-      <td>ID</td><td><input type="text" name="id" value="<?php echo $radek["clanek_id"];?>" readonly></td>
+      <td>ID</td><td><input type="text" name="id" value="<?php echo $radek["clanek_id"];?>" readonly class="form-control"></td>
     </tr>
     <tr>
-      <td>Název článku</td><td><input type="text" name="nazev" value="<?php echo $radek["clanek_nazev"];?>" readonly></td>
+      <td>Název článku</td><td><input type="text" name="nazev" value="<?php echo $radek["clanek_nazev"];?>" readonly class="form-control"></td>
     </tr>
     <?php
       if($userRole == 2 || $userRole == 6 || $userRole == 7){
         echo '<tr>
           <td>Stav</td>
           <td>
-            <select name="stav">';
+            <select name="stav" class="form-control">';
 
               while($stavy = mysqli_fetch_assoc($vysledek2)){
                 if($stavy["stav_id"]==$radek["clanek_stav"]){
@@ -53,34 +55,36 @@
         if($userRole == 2 || $userRole == 6){
           echo '<tr>';
           echo '<td>Zpráva redaktora</td>';
-          echo '<td><textarea name="zpravaRedaktora" rows="5" cols="30" required>'.$radek["clanek_zpravaRedaktora"].'</textarea></td>';
+          echo '<td><textarea name="zpravaRedaktora" rows="5" cols="30" class="form-control" required>'.$radek["clanek_zpravaRedaktora"].'</textarea></td>';
           echo '</tr>';
         }else echo '<textarea name="zpravaRedaktora" hidden>'.$radek["clanek_zpravaRedaktora"].'</textarea>';
         if($userRole == 2 || $userRole == 4){
           echo '<tr>';
           echo '<td>Zpráva recenzenta</td>';
-          echo '<td><textarea name="zpravaRecenzenta" rows="5" cols="30" required>'.$radek["clanek_zpravaRecenzenta"].'</textarea></td>';
+          echo '<td><textarea name="zpravaRecenzenta" rows="5" cols="30" class="form-control" required>'.$radek["clanek_zpravaRecenzenta"].'</textarea></td>';
           echo '</tr>';
         }else echo '<textarea name="zpravaRecenzenta" hidden>'.$radek["clanek_zpravaRecenzenta"].'</textarea>';
         if($userRole == 2 || $userRole == 7){
           echo '<tr>';
           echo '<td>Zpráva šéfredaktora</td>';
-          echo '<td><textarea name="zpravaSefredaktora" rows="5" cols="30" >'.$radek["clanek_zpravaSefredaktora"].'</textarea></td>';
+          echo '<td><textarea name="zpravaSefredaktora" rows="5" cols="30" class="form-control">'.$radek["clanek_zpravaSefredaktora"].'</textarea></td>';
           echo '</tr>';
         }else echo '<textarea name="zpravaSefredaktora" hidden>'.$radek["clanek_zpravaSefredaktora"].'</textarea>';
         if($userRole == 2 || $userRole == 6 || $userRole == 7){
           if($radek["clanek_vydany"]!=0){
             echo '<tr>';
             echo '<td>Číslo vydání</td>';
-            echo '<td><input type="number" name="vydani" value="'.$radek["clanek_vydani"].'"required></td>';
+            echo '<td><input type="number" name="vydani" value="'.$radek["clanek_vydani"].'"required class="form-control"></td>';
             echo '</tr>';
           }
         }
         ?>
         <tr>
-          <td><input type="submit" name="submit" value="Změnit"></td><td><input type="submit" name="submit" value="Zpět"></td>
+          <td colspan="2" align="center"><input type="submit" name="submit" value="Změnit" id="reg-but">&nbsp;<input type="submit" name="submit" value="Zpět" id="reg-but"></td>
         </tr>
   </table>
+      </div>
+      </div>
 </form>
 <?php
   if(isset($_GET["submit"])){

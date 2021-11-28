@@ -19,27 +19,30 @@
     //header("location:spravaUzivatelu.php");
   }
  ?>
+ <h3 align="center">Úprava uživatele</h3>
  <form action="updateUzivatel.php" method="get">
+   <div class="d-flex justify-content-center mb-3">
+     <div class="d-inline-flex" id="reg">
    <table>
      <tr>
-       <td>ID</td><td><input type="text" name="id" value="<?php echo $id;?>" readonly></td>
+       <td>ID</td><td><input type="text" name="id" value="<?php echo $id;?>" readonly class="form-control"></td>
      </tr>
      <tr>
-       <td>Jméno</td><td><input type="text" name="jmeno" value="<?php echo $jmeno;?>"></td>
+       <td>Jméno</td><td><input type="text" name="jmeno" value="<?php echo $jmeno;?>" class="form-control"></td>
      </tr>
      <tr>
-       <td>Příjmení</td><td><input type="text" name="prijmeni" value="<?php echo $prijmeni;?>" ></td>
+       <td>Příjmení</td><td><input type="text" name="prijmeni" value="<?php echo $prijmeni;?>" class="form-control"></td>
      </tr>
      <tr>
-       <td>Login</td><td><input type="text" name="login" value="<?php echo $login;?>"></td>
+       <td>Login</td><td><input type="text" name="login" value="<?php echo $login;?>" class="form-control"></td>
      </tr>
      <tr>
-       <td>E-mail</td><td><input type="text" name="email" value="<?php echo $email2;?>" ></td>
+       <td>E-mail</td><td><input type="text" name="email" value="<?php echo $email2;?>" class="form-control"></td>
      </tr>
      <tr>
        <td>Role</td>
        <td>
-         <select name="role">
+         <select name="role" class="form-control">
            <?php
            //cyklus vypisuje role z databáze a vybere primární roli vybraného uživatele
             while($roles = mysqli_fetch_assoc($vysledek2)){
@@ -54,9 +57,11 @@
        </td>
      </tr>
      <tr>
-       <td><input type="submit" name="zmenit" value="Změnit"></td><td><input type="submit" name="zmenit" value="Zpět"></td>
+       <td colspan="2" align="center"><input type="submit" name="zmenit" value="Změnit" id="reg-but">&nbsp;<input type="submit" name="zmenit" value="Zpět" id="reg-but"></td>
      </tr>
    </table>
+      </div>
+    </div>
  </form>
  <?php
  if(isset($_GET["zmenit"])){
