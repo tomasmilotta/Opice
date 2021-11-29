@@ -53,10 +53,12 @@
      $dotaz = 'update users set user_passwd="'.$heslo.'" where user_id='.$_POST["id"];
      $vysledek = mysqli_query($spojeni, $dotaz);
      if($vysledek){
-       header("location:spravaUzivatelu.php");
+       //header("location:spravaUzivatelu.php");
+       echo '<script> location.replace("spravaUzivatelu.php"); </script>';
      }
    }else if($_POST["reset"]=="Ne"){
-     header("location:spravaUzivatelu.php");
+     //header("location:spravaUzivatelu.php");
+     echo '<script> location.replace("spravaUzivatelu.php"); </script>';
    }
  }
  ?>
