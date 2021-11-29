@@ -1,9 +1,9 @@
 <?php
-  //školní server
-  //servername  = "localhost";
-  //$username = "broz07";
-  //$password = "Tis*188101";
-  //$dbname = "broz07";
+  //Hosting broz.lol
+  //$servername = "127.0.0.1";
+  //$username = "broz.lol";
+  //$password = "LpQ4pbQKf4zg";
+  //$dbname = "brozlol1";
 
   //testovací domácí XAMPP
   $servername = "127.0.0.1";
