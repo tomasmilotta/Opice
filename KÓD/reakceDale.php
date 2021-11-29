@@ -13,6 +13,12 @@
     $verze = $radek["clanek_verze"];
     $autor = $radek["user_name"].' '.$radek["user_sname"];
   }
+  if(isset($_POST['submit'])){
+    $dotaz = 'update clanky set clanek_stav=2, clanek_zpravaRedaktora = "'.$_POST["zprava"].'" where clanek_id = '.$_POST["id"].';';
+    if(mysqli_query($spojeni, $dotaz)){
+      header("location:spravaClanku.php");
+    }
+  }
  ?>
  <h3 align="center">Posunout dále</h3>
  <form action="reakceDale.php" method="post">
@@ -39,14 +45,6 @@
 </div>
 </div>
  </form>
- <?php
- if(isset($_POST['submit'])){
-   $dotaz = 'update clanky set clanek_stav=2, clanek_zpravaRedaktora = "'.$_POST["zprava"].'" where clanek_id = '.$_POST["id"].';';
-   if(mysqli_query($spojeni, $dotaz)){
-     header("location:spravaClanku.php");
-   }
- }
-  ?>
  <?php
  require "footer.php";
   ?>

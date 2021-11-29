@@ -13,6 +13,16 @@
     $verze = $radek["clanek_verze"];
     $autor = $radek["user_name"].' '.$radek["user_sname"];
   }
+  if(isset($_POST['submit'])){
+    if($role!=4){
+      $dotaz = 'update clanky set clanek_stav=3, clanek_zpravaRedaktora = "'.$_POST["zprava"].'" where clanek_id = '.$_POST["id"].';';
+    }else{
+      $dotaz = 'update clanky set clanek_stav=3, clanek_zpravaRecenzenta = "'.$_POST["zprava"].'" where clanek_id = '.$_POST["id"].';';
+    }
+    if(mysqli_query($spojeni, $dotaz)){
+      header("location:spravaClanku.php");
+    }
+  }
  ?>
  <h3 align="center">Vrátit autorovi</h3>
  <form action="reakce.php" method="post">
@@ -39,18 +49,6 @@
 </div>
 </div>
  </form>
- <?php
- if(isset($_POST['submit'])){
-   if($role!=4){
-     $dotaz = 'update clanky set clanek_stav=3, clanek_zpravaRedaktora = "'.$_POST["zprava"].'" where clanek_id = '.$_POST["id"].';';
-   }else{
-     $dotaz = 'update clanky set clanek_stav=3, clanek_zpravaRecenzenta = "'.$_POST["zprava"].'" where clanek_id = '.$_POST["id"].';';
-   }
-   if(mysqli_query($spojeni, $dotaz)){
-     header("location:spravaClanku.php");
-   }
- }
-  ?>
  <?php
  require "footer.php";
   ?>

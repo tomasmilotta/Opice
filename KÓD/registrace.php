@@ -3,7 +3,7 @@
   require "header.php";
   require "connectDB.php";
  ?>
- 
+ <h3 align=center>Registrace</h3>
  <form action="registrace.php" method="get">
  <div class="d-flex justify-content-center mb-3">
    <div class="d-inline-flex" id="reg">
@@ -107,4 +107,5 @@
     </div>';
     }
   }
+  require "footer.php";
 ?>

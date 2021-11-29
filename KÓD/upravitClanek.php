@@ -17,6 +17,30 @@
   $vysledek = mysqli_query($spojeni, $dotaz);
   $vysledek2 = mysqli_query($spojeni, $dotaz2);
   $radek = mysqli_fetch_assoc($vysledek);
+  if(isset($_GET["submit"])){
+    if($_GET["submit"]=="Změnit"){
+      if($_GET["stav"]==4){
+        $dotaz = 'update clanky set clanek_stav=4, clanek_zpravaRedaktora="'.$_GET["zpravaRedaktora"].'", clanek_zpravaRecenzenta="'.$_GET["zpravaRecenzenta"].'", clanek_zpravaSefredaktora="'.$_GET["zpravaSefredaktora"].'", clanek_vydany=0, clanek_vydani=DEFAULT, clanek_schvaleny=1 where clanek_id ='.$_GET["id"];
+      }else if($_GET["stav"]==5){
+        if(isset($_GET["vydani"])){
+          $vydani = $_GET["vydani"];
+        }else $vydani = "NULL";
+        $dotaz = 'update clanky set clanek_stav=5, clanek_zpravaRedaktora="'.$_GET["zpravaRedaktora"].'", clanek_zpravaRecenzenta="'.$_GET["zpravaRecenzenta"].'", clanek_zpravaSefredaktora="'.$_GET["zpravaSefredaktora"].'", clanek_vydany=1, clanek_vydani='.$vydani.', clanek_schvaleny=1 where clanek_id ='.$_GET["id"];
+        echo $dotaz;
+      }else{
+        $dotaz = 'update clanky set clanek_stav='.$_GET["stav"].', clanek_zpravaRedaktora="'.$_GET["zpravaRedaktora"].'", clanek_zpravaRecenzenta="'.$_GET["zpravaRecenzenta"].'", clanek_zpravaSefredaktora="'.$_GET["zpravaSefredaktora"].'", clanek_vydany=0, clanek_vydani=DEFAULT, clanek_schvaleny=0 where clanek_id ='.$_GET["id"];
+        echo $dotaz;
+      }
+      if($userRole==4){
+        $dotaz = 'update clanky set clanek_stav=1, clanek_zpravaRedaktora="'.$_GET["zpravaRedaktora"].'", clanek_zpravaRecenzenta="'.$_GET["zpravaRecenzenta"].'", clanek_zpravaSefredaktora="'.$_GET["zpravaSefredaktora"].'", clanek_vydany=0, clanek_vydani=DEFAULT, clanek_schvaleny=0 where clanek_id ='.$_GET["id"];
+      }
+      $vysledek = mysqli_query($spojeni, $dotaz);
+      if($vysledek) header("location:spravaClanku.php");
+    }else if($_GET["submit"]=="Zpět"){
+      header("location:spravaClanku.php");
+    }
+  }
+
  ?>
 <h3 align=center>Úprava článku</h3>
 <form action="upravitClanek.php" method="get">
@@ -86,33 +110,6 @@
       </div>
       </div>
 </form>
-<?php
-  if(isset($_GET["submit"])){
-    if($_GET["submit"]=="Změnit"){
-      if($_GET["stav"]==4){
-        $dotaz = 'update clanky set clanek_stav=4, clanek_zpravaRedaktora="'.$_GET["zpravaRedaktora"].'", clanek_zpravaRecenzenta="'.$_GET["zpravaRecenzenta"].'", clanek_zpravaSefredaktora="'.$_GET["zpravaSefredaktora"].'", clanek_vydany=0, clanek_vydani=DEFAULT, clanek_schvaleny=1 where clanek_id ='.$_GET["id"];
-      }else if($_GET["stav"]==5){
-        if(isset($_GET["vydani"])){
-          $vydani = $_GET["vydani"];
-        }else $vydani = "NULL";
-        $dotaz = 'update clanky set clanek_stav=5, clanek_zpravaRedaktora="'.$_GET["zpravaRedaktora"].'", clanek_zpravaRecenzenta="'.$_GET["zpravaRecenzenta"].'", clanek_zpravaSefredaktora="'.$_GET["zpravaSefredaktora"].'", clanek_vydany=1, clanek_vydani='.$vydani.', clanek_schvaleny=1 where clanek_id ='.$_GET["id"];
-        echo $dotaz;
-      }else{
-        $dotaz = 'update clanky set clanek_stav='.$_GET["stav"].', clanek_zpravaRedaktora="'.$_GET["zpravaRedaktora"].'", clanek_zpravaRecenzenta="'.$_GET["zpravaRecenzenta"].'", clanek_zpravaSefredaktora="'.$_GET["zpravaSefredaktora"].'", clanek_vydany=0, clanek_vydani=DEFAULT, clanek_schvaleny=0 where clanek_id ='.$_GET["id"];
-        echo $dotaz;
-      }
-      if($userRole==4){
-        $dotaz = 'update clanky set clanek_stav=1, clanek_zpravaRedaktora="'.$_GET["zpravaRedaktora"].'", clanek_zpravaRecenzenta="'.$_GET["zpravaRecenzenta"].'", clanek_zpravaSefredaktora="'.$_GET["zpravaSefredaktora"].'", clanek_vydany=0, clanek_vydani=DEFAULT, clanek_schvaleny=0 where clanek_id ='.$_GET["id"];
-      }
-      $vysledek = mysqli_query($spojeni, $dotaz);
-      if($vysledek) header("location:spravaClanku.php");
-    }else if($_GET["submit"]=="Zpět"){
-      header("location:spravaClanku.php");
-    }
-  }
-
- ?>
-
 <?php
   require "footer.php";
  ?>

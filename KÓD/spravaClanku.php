@@ -18,7 +18,7 @@
   if(isset($_SESSION['role'])){
     $role = $_SESSION['role'];
     if($role==3){
-      echo '<a href="pridatClanek.php">Přidat článek</a>';
+      echo '<a href="pridatClanek.php" id="add-btn" class="btn">Přidat článek</a>';
       //výpis článků
       echo "<table class='w-100 sprava-tab'>";
       echo "<tr>";
