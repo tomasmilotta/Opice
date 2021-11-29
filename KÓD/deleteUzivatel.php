@@ -1,7 +1,9 @@
 <?php
   require "header.php";
   require "connectDB.php";
-  if(!isset($_SESSION["role"])||$_SESSION["role"]!=2) header("location:index.php");
+  if(!isset($_SESSION["role"])||$_SESSION["role"]!=2) {
+    header("location:index.php");
+  }
   if(isset($_GET["id"])){
     $id = $_GET["id"];
     $dotaz = "select * from users where user_id=".$id;
@@ -12,7 +14,7 @@
     $login = $radek["user_login"];
     $email = $radek["user_email"];
   }else{
-    //header("location:spravaUzivatelu.php");
+
   }
  ?>
  <h3 align="center">Mazání uživatele</h3>
@@ -52,10 +54,12 @@
      echo $dotaz;
      $vysledek = mysqli_query($spojeni, $dotaz);
      if($vysledek){
-       header("location:spravaUzivatelu.php");
+       //header ("location:spravaUzivatelu.php");
+       echo '<script> location.replace("spravaUzivatelu.php"); </script>';
      }
    }else if($_POST["smazat"]=="Ne"){
-     header("location:spravaUzivatelu.php");
+     //header ("location:spravaUzivatelu.php");
+     echo '<script> location.replace("spravaUzivatelu.php"); </script>';
    }
  }
   ?>
