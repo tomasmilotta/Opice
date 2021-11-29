@@ -2,9 +2,7 @@
   require "header.php";
   require "connectDB.php";
  ?>
-<ul>
-
-</ul>
+ <p class="text-center lead">Vydaná čísla: TODO</p>
 <?php
   require "footer.php";
  ?>
