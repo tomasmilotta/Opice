@@ -20,15 +20,15 @@
   if(isset($_GET["submit"])){
     if($_GET["submit"]=="Změnit"){
       if($_GET["stav"]==4){
-        $dotaz = 'update clanky set clanek_stav=4, clanek_zpravaRedaktora="'.$_GET["zpravaRedaktora"].'", clanek_zpravaRecenzenta="'.$_GET["zpravaRecenzenta"].'", clanek_zpravaSefredaktora="'.$_GET["zpravaSefredaktora"].'", clanek_vydany=0, clanek_vydani=DEFAULT, clanek_schvaleny=1 where clanek_id ='.$_GET["id"];
+        $dotaz = 'update clanky set clanek_stav=4, clanek_zpravaRedaktora="'.$_GET["zpravaRedaktora"].'", clanek_zpravaRecenzenta="'.$_GET["zpravaRecenzenta"].'", clanek_zpravaSefredaktora="'.$_GET["zpravaSefredaktora"].'", clanek_vydany=0, clanek_vydani=DEFAULT, clanek_rok=DEFAULT, clanek_schvaleny=1 where clanek_id ='.$_GET["id"];
       }else if($_GET["stav"]==5){
         if(isset($_GET["vydani"])){
           $vydani = $_GET["vydani"];
         }else $vydani = "NULL";
-        $dotaz = 'update clanky set clanek_stav=5, clanek_zpravaRedaktora="'.$_GET["zpravaRedaktora"].'", clanek_zpravaRecenzenta="'.$_GET["zpravaRecenzenta"].'", clanek_zpravaSefredaktora="'.$_GET["zpravaSefredaktora"].'", clanek_vydany=1, clanek_vydani='.$vydani.', clanek_schvaleny=1 where clanek_id ='.$_GET["id"];
+        $dotaz = 'update clanky set clanek_stav=5, clanek_zpravaRedaktora="'.$_GET["zpravaRedaktora"].'", clanek_zpravaRecenzenta="'.$_GET["zpravaRecenzenta"].'", clanek_zpravaSefredaktora="'.$_GET["zpravaSefredaktora"].'", clanek_vydany=1, clanek_vydani='.$vydani.', clanek_rok='.$_GET["rocnik"].', clanek_schvaleny=1 where clanek_id ='.$_GET["id"];
         echo $dotaz;
       }else{
-        $dotaz = 'update clanky set clanek_stav='.$_GET["stav"].', clanek_zpravaRedaktora="'.$_GET["zpravaRedaktora"].'", clanek_zpravaRecenzenta="'.$_GET["zpravaRecenzenta"].'", clanek_zpravaSefredaktora="'.$_GET["zpravaSefredaktora"].'", clanek_vydany=0, clanek_vydani=DEFAULT, clanek_schvaleny=0 where clanek_id ='.$_GET["id"];
+        $dotaz = 'update clanky set clanek_stav='.$_GET["stav"].', clanek_zpravaRedaktora="'.$_GET["zpravaRedaktora"].'", clanek_zpravaRecenzenta="'.$_GET["zpravaRecenzenta"].'", clanek_zpravaSefredaktora="'.$_GET["zpravaSefredaktora"].'", clanek_vydany=0, clanek_vydani=DEFAULT, clanek_rok=DEFAULT, clanek_schvaleny=0 where clanek_id ='.$_GET["id"];
         echo $dotaz;
       }
       if($userRole==4){
@@ -100,6 +100,10 @@
         }else echo '<textarea name="zpravaSefredaktora" hidden>'.$radek["clanek_zpravaSefredaktora"].'</textarea>';
         if($userRole == 2 || $userRole == 6 || $userRole == 7){
           if($radek["clanek_vydany"]!=0){
+            echo '<tr>';
+            echo '<td>Ročník vydání</td>';
+            echo '<td><input type="number" name="rocnik" value="'.$radek["clanek_rok"].'"required class="form-control"></td>';
+            echo '</tr>';
             echo '<tr>';
             echo '<td>Číslo vydání</td>';
             echo '<td><input type="number" name="vydani" value="'.$radek["clanek_vydani"].'"required class="form-control"></td>';

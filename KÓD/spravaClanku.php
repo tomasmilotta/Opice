@@ -57,6 +57,8 @@
           }
         }
         closedir($handle);
+      }else{
+         echo '<td>Není soubor</td>';
       }
       echo "<td>".$radek['stav_popis']."</td>";
       echo "<td align = center>".$radek['clanek_verze']."</td>";
@@ -77,7 +79,7 @@
         echo "&#9989;";
       }
       echo "</td>";
-      echo "<td align = center>".$radek['clanek_vydani']."</td>";
+      echo "<td align = center>".$radek['clanek_rok']."/".$radek['clanek_vydani']."</td>";
       if($role == 2 || $role==6 || $role == 7 || $role==4){
         if($role == 4){
           if($radek["stav_id"]==2){
