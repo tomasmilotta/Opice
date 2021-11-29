@@ -1,134 +1,126 @@
 <?php
   require "header.php";
   require "connectDB.php";
-  if(isset($_SESSION['chyba'])){
-    if($_SESSION['chyba']==0){
-      echo "<script type='text/javascript'>alert('Úspěch!');</script>";
-      unset($_SESSION['chyba']);
-    }else{
-      echo "<script type='text/javascript'>alert('Chyba při nahrávání souboru!');</script>";
-      unset($_SESSION['chyba']);
+  if(!isset($_SESSION["role"])||$_SESSION["role"]!=2){
+    if($_SESSION["role"]!=7){
+      if($_SESSION["role"]!=6){
+        if($_SESSION["role"]!=4){
+          header("location:index.php");
+        }
+      }
     }
   }
-?>
-<div class="container-fluid">
-  <div class="row">
-      <div class="col-12">
-      <?php
-  if(isset($_SESSION['role'])){
-    $role = $_SESSION['role'];
-    if($role==3){
-      echo '<a href="pridatClanek.php" id="add-btn" class="btn">Přidat článek</a>';
-      //výpis článků
-      echo "<table class='w-100 sprava-tab'>";
-      echo "<tr>";
-      echo "<th>Název článku</th><th>Autor</th><th>Obsah článku</th><th>Stav článku</th><th>Verze článku</th><th>Zpráva redaktora</th><th>Posudek recenzenta</th><th>Zpráva šéfredaktora</th><th>Schválený</th><th>Vydaný</th><th>Číslo vydání</th><th>Reagovat</th>";
-      $dotaz = "SELECT * FROM clanky join users on users.user_id=clanky.clanek_autor join stavy on stavy.stav_id=clanky.clanek_stav where user_id = ".$_SESSION['user_id'].";";
-    }else{
-      //výpis článků
-      echo "<table class='w-100 sprava-tab'>";
-      echo "<tr>";
-      if($role == 6 || $role == 7 || $role == 2){
-        $dotaz = "SELECT * FROM clanky join users on users.user_id=clanky.clanek_autor join stavy on stavy.stav_id=clanky.clanek_stav order by clanek_stav";
-        echo "<th>ID</th><th>Název článku</th><th>Autor</th><th>Obsah článku</th><th>Stav článku</th><th>Verze článku</th><th>Zpráva redaktora</th><th>Posudek recenzenta</th><th>Zpráva šéfredaktora</th><th>Schválený</th><th>Vydaný</th><th>Číslo vydání</th><th></th><th></th><th></th>";
+  $userRole = $_SESSION["role"];
+  $id = $_GET["id"];
+  $dotaz = "select * from clanky join users on clanky.clanek_autor = users.user_id join stavy on clanky.clanek_stav = stavy.stav_id where clanek_id=".$id;
+  $dotaz2 = "select * from stavy";
+  $vysledek = mysqli_query($spojeni, $dotaz);
+  $vysledek2 = mysqli_query($spojeni, $dotaz2);
+  $radek = mysqli_fetch_assoc($vysledek);
+  if(isset($_GET["submit"])){
+    if($_GET["submit"]=="Změnit"){
+      if($_GET["stav"]==4){
+        $dotaz = 'update clanky set clanek_stav=4, clanek_zpravaRedaktora="'.$_GET["zpravaRedaktora"].'", clanek_zpravaRecenzenta="'.$_GET["zpravaRecenzenta"].'", clanek_zpravaSefredaktora="'.$_GET["zpravaSefredaktora"].'", clanek_vydany=0, clanek_vydani=DEFAULT, clanek_rok=DEFAULT, clanek_schvaleny=1 where clanek_id ='.$_GET["id"];
+      }else if($_GET["stav"]==5){
+        if(isset($_GET["vydani"])){
+          $vydani = $_GET["vydani"];
+        }else $vydani = "NULL";
+        if(isset($_GET["rok"])){
+          $rocnik = $_GET["rok"];
+        }else $rocnik = "NULL";
+        $dotaz = 'update clanky set clanek_stav=5, clanek_zpravaRedaktora="'.$_GET["zpravaRedaktora"].'", clanek_zpravaRecenzenta="'.$_GET["zpravaRecenzenta"].'", clanek_zpravaSefredaktora="'.$_GET["zpravaSefredaktora"].'", clanek_vydany=1, clanek_vydani='.$vydani.', clanek_rok='.$rocnik.', clanek_schvaleny=1 where clanek_id ='.$_GET["id"];
+        echo $rocnik.' | '.$dotaz;
+      }else{
+        $dotaz = 'update clanky set clanek_stav='.$_GET["stav"].', clanek_zpravaRedaktora="'.$_GET["zpravaRedaktora"].'", clanek_zpravaRecenzenta="'.$_GET["zpravaRecenzenta"].'", clanek_zpravaSefredaktora="'.$_GET["zpravaSefredaktora"].'", clanek_vydany=0, clanek_vydani=DEFAULT, clanek_rok=DEFAULT, clanek_schvaleny=0 where clanek_id ='.$_GET["id"];
+        echo $dotaz;
       }
-      if($role == 4){
-        $dotaz = "SELECT * FROM clanky join users on users.user_id=clanky.clanek_autor join stavy on stavy.stav_id=clanky.clanek_stav order by clanek_stav";
-        echo "<th>ID</th><th>Název článku</th><th>Autor</th><th>Obsah článku</th><th>Stav článku</th><th>Verze článku</th><th>Zpráva redaktora</th><th>Posudek recenzenta</th><th>Zpráva šéfredaktora</th><th>Schválený</th><th>Vydaný</th><th>Číslo vydání</th><th></th><th></th>";
+      if($userRole==4){
+        $dotaz = 'update clanky set clanek_stav=1, clanek_zpravaRedaktora="'.$_GET["zpravaRedaktora"].'", clanek_zpravaRecenzenta="'.$_GET["zpravaRecenzenta"].'", clanek_zpravaSefredaktora="'.$_GET["zpravaSefredaktora"].'", clanek_vydany=0, clanek_vydani=DEFAULT, clanek_rok=DEFAULT, clanek_schvaleny=0 where clanek_id ='.$_GET["id"];
       }
-    }
-    $vysledek = mysqli_query($spojeni, $dotaz);
-    echo "</tr>";
-    $i = 0;
-    while($radek = mysqli_fetch_assoc($vysledek)){
-      if (($i%2)==1)
+      $vysledek = mysqli_query($spojeni, $dotaz);
+      if($vysledek)
       {
-        echo "<tr class='radek-clanky'>";
+        $_SESSION["msg-good"]="Článek úspěšně upraven.";
+        header("location:spravaClanku.php");
       }
-      else echo "<tr class='radek radek-clanky'>";
-      if(isset($role) && $role!=3)echo "<td align = center>".$radek['clanek_id']."</td>";
-      echo "<td>".$radek['clanek_nazev']."</td>";
-      echo "<td>".$radek['user_login']."</td>";
-      $path = "clanky/".$radek["user_login"]."/".str_replace(" ","_",$radek["clanek_nazev"])."/v".$radek["clanek_verze"]."/";
-      if($handle = opendir($path)){
-        while(false != ($entry = readdir($handle))){
-          if($entry != "." && $entry != ".."){
-            echo '<td><a href="download.php?file='.$entry.'&path='.$path.'&autor='.$radek["user_login"].'">&#128190; Stáhnout</a></td>';
-          }
-        }
-        closedir($handle);
-      }else{
-         echo '<td>Není soubor</td>';
-      }
-      echo "<td>".$radek['stav_popis']."</td>";
-      echo "<td align = center>".$radek['clanek_verze']."</td>";
-      echo "<td>".$radek['clanek_zpravaRedaktora']."</td>";
-      echo "<td>".$radek['clanek_zpravaRecenzenta']."</td>";
-      echo "<td>".$radek['clanek_zpravaSefredaktora']."</td>";
-      echo "<td align = center>";
-      if($radek['clanek_schvaleny']==0){
-        echo "&#10060;";
-      }else{
-        echo "&#9989;";
-      }
-      echo "</td>";
-      echo "<td align = center>";
-      if($radek['clanek_vydany']==0){
-        echo "&#10060;";
-      }else{
-        echo "&#9989;";
-      }
-      echo "</td>";
-      echo "<td align = center>".$radek['clanek_rok']."/".$radek['clanek_vydani']."</td>";
-      if($role == 2 || $role==6 || $role == 7 || $role==4){
-        if($role == 4){
-          if($radek["stav_id"]==2){
-            echo '<td><a href="upravitClanek.php?id='.$radek["clanek_id"].'" class="btn">Upravit</a></td>';
-          }else{
-            echo '<td align=center>Vyřešeno</td>';
-          }
-        }else{
-          echo '<td><a href="upravitClanek.php?id='.$radek["clanek_id"].'" class="btn">Upravit</a></td>';
-        }
-        if($radek['stav_id']==1 || $radek['stav_id']==2){
-          if($radek['stav_id']==1){
-            if($role!=4){
-              echo '<td align=center><a href="reakce.php?id='.$radek["clanek_id"].'" class="btn">Vrátit autorovi</a></td>';
-            }else echo '<td align=center>Vyřešeno</td>';
-          }else{
-            echo '<td align=center><a href="reakce.php?id='.$radek["clanek_id"].'" class="btn">Vrátit autorovi</a></td>';
-          }
-        }else{
-          echo '<td align=center>Vyřešeno</td>';
-        }
-        if($role!=4){
-          if($radek["stav_id"]==1){
-            echo '<td><a href="reakceDale.php?id='.$radek["clanek_id"].'" class="btn">Posunout dále</a></td>';
-          }else {
-            echo '<td align=center>Vyřešeno</td>';
-          }
-        }
-      }
-      if($role==3){
-        if($radek['stav_id'] == 3){
-          echo '<td><a href="updateClanek.php?name='.$radek["clanek_nazev"].'" class="btn">Reagovat</a></td>';
-        }else{
-          echo '<td>V pořádku</td>';
-        }
-      }
-      echo "</tr>";
-      $i++;
+    }else if($_GET["submit"]=="Zpět"){
+      header("location:spravaClanku.php");
     }
-    echo "</table>";
-  }else{
-    echo "<p>Nejste přihlášený!</p>";
   }
 
  ?>
-      </div>
-  </div>
-</div>
+<h3 align=center>Úprava článku</h3>
+<form action="upravitClanek.php" method="get">
+<div class="d-flex justify-content-center mb-3">
+     <div class="d-inline-flex" id="reg">
+  <table>
+    <tr>
+      <td>ID</td><td><input type="text" name="id" value="<?php echo $radek["clanek_id"];?>" readonly class="form-control"></td>
+    </tr>
+    <tr>
+      <td>Název článku</td><td><input type="text" name="nazev" value="<?php echo $radek["clanek_nazev"];?>" readonly class="form-control"></td>
+    </tr>
+    <?php
+      if($userRole == 2 || $userRole == 6 || $userRole == 7){
+        echo '<tr>
+          <td>Stav</td>
+          <td>
+            <select name="stav" class="form-control">';
 
- <?php
- require "footer.php";
-  ?>
+              while($stavy = mysqli_fetch_assoc($vysledek2)){
+                if($stavy["stav_id"]==$radek["clanek_stav"]){
+                  echo '<option value="'.$stavy["stav_id"].'" selected>'.$stavy["stav_popis"].'</option>';
+                }else{
+                  echo '<option value="'.$stavy["stav_id"].'">'.$stavy["stav_popis"].'</option>';
+                }
+              }
+
+            echo '</select>
+          </td>
+        </tr>';
+      }else{
+        echo '<input type="text" name=stav hidden value="'.$radek["clanek_stav"].'">';
+      }
+     ?>
+       <?php
+        if($userRole == 2 || $userRole == 6){
+          echo '<tr>';
+          echo '<td>Zpráva redaktora</td>';
+          echo '<td><textarea name="zpravaRedaktora" rows="5" cols="30" class="form-control" required>'.$radek["clanek_zpravaRedaktora"].'</textarea></td>';
+          echo '</tr>';
+        }else echo '<textarea name="zpravaRedaktora" hidden>'.$radek["clanek_zpravaRedaktora"].'</textarea>';
+        if($userRole == 2 || $userRole == 4){
+          echo '<tr>';
+          echo '<td>Zpráva recenzenta</td>';
+          echo '<td><textarea name="zpravaRecenzenta" rows="5" cols="30" class="form-control" required>'.$radek["clanek_zpravaRecenzenta"].'</textarea></td>';
+          echo '</tr>';
+        }else echo '<textarea name="zpravaRecenzenta" hidden>'.$radek["clanek_zpravaRecenzenta"].'</textarea>';
+        if($userRole == 2 || $userRole == 7){
+          echo '<tr>';
+          echo '<td>Zpráva šéfredaktora</td>';
+          echo '<td><textarea name="zpravaSefredaktora" rows="5" cols="30" class="form-control">'.$radek["clanek_zpravaSefredaktora"].'</textarea></td>';
+          echo '</tr>';
+        }else echo '<textarea name="zpravaSefredaktora" hidden>'.$radek["clanek_zpravaSefredaktora"].'</textarea>';
+        if($userRole == 2 || $userRole == 6 || $userRole == 7){
+          if($radek["clanek_vydany"]!=0){
+            echo '<tr>';
+            echo '<td>Ročník vydání</td>';
+            echo '<td><input type="number" name="rok" value="'.$radek["clanek_rok"].'"required class="form-control"></td>';
+            echo '</tr>';
+            echo '<tr>';
+            echo '<td>Číslo vydání</td>';
+            echo '<td><input type="number" name="vydani" value="'.$radek["clanek_vydani"].'"required class="form-control"></td>';
+            echo '</tr>';
+          }
+        }
+        ?>
+        <tr>
+          <td colspan="2" align="center"><input type="submit" name="submit" value="Změnit" id="reg-but">&nbsp;<input type="submit" name="submit" value="Zpět" id="reg-but"></td>
+        </tr>
+  </table>
+      </div>
+      </div>
+</form>
+<?php
+  require "footer.php";
+ ?>
