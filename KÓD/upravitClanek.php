@@ -35,7 +35,11 @@
         $dotaz = 'update clanky set clanek_stav=1, clanek_zpravaRedaktora="'.$_GET["zpravaRedaktora"].'", clanek_zpravaRecenzenta="'.$_GET["zpravaRecenzenta"].'", clanek_zpravaSefredaktora="'.$_GET["zpravaSefredaktora"].'", clanek_vydany=0, clanek_vydani=DEFAULT, clanek_schvaleny=0 where clanek_id ='.$_GET["id"];
       }
       $vysledek = mysqli_query($spojeni, $dotaz);
-      if($vysledek) header("location:spravaClanku.php");
+      if($vysledek)
+      {
+        $_SESSION["msg-good"]="Článek úspěšně upraven.";
+        header("location:spravaClanku.php");
+      }
     }else if($_GET["submit"]=="Zpět"){
       header("location:spravaClanku.php");
     }

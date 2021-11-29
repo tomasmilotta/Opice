@@ -143,3 +143,18 @@ html, body {
 #reg-but{
     margin-top: 5px !important;
 }
+.card
+{
+    margin-bottom: 24px;
+    border: 2px solid var(--zelena) !important;
+    border-radius: 15px !important;
+}
+.card img{
+    border-top-left-radius: 15px !important;
+    border-top-right-radius: 15px !important;
+
+}
+#zl{
+    border-bottom: 3px solid var(--zelena);
+    border-bottom-width: 50% ;
+}

@@ -21,6 +21,7 @@
       $dotaz = 'update users set user_passwd="'.$heslo.'" where user_id='.$_POST["id"];
       $vysledek = mysqli_query($spojeni, $dotaz);
       if($vysledek){
+        $_SESSION["msg-good"]="Heslo bylo úspěšně změněno na '1234'.";
         header("location:spravaUzivatelu.php");
       }
     }else if($_POST["reset"]=="Ne"){

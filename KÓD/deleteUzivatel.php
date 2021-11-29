@@ -22,6 +22,7 @@
       echo $dotaz;
       $vysledek = mysqli_query($spojeni, $dotaz);
       if($vysledek){
+        $_SESSION["msg-good"]="Uživatel úspěšně smazán.";
         header("location:spravaUzivatelu.php");
       }
     }else if($_POST["smazat"]=="Ne"){
