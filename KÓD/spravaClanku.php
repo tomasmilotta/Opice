@@ -57,6 +57,8 @@
           }
         }
         closedir($handle);
+      }else{
+         echo '<td>Není soubor</td>';
       }
       echo "<td>".$radek['stav_popis']."</td>";
       echo "<td align = center>".$radek['clanek_verze']."</td>";
