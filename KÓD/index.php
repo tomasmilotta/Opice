@@ -42,13 +42,13 @@
         <img src="img/broz.jpg" class="card-img-top" alt="...">
         <div class="card-body">
         <h5 class="card-title">Daniel Brož</h5>
-          <p class="card-text">Autor</p>
+          <p class="card-text">Administrátor</p>
         </div>
       </div>
     </div>
     <div class="col-4">
     <div class="card" >
-        <img src="img/ledl.png" class="card-img-top" alt="...">
+        <img src="img/koci.jpg" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">Michael Kočí</h5>
           <p class="card-text">Redaktor</p>
@@ -59,8 +59,8 @@
     <div class="card" >
         <img src="img/hanek.jpg" class="card-img-top" alt="...">
         <div class="card-body">
-        <h5 class="card-title">Karel Lédl</h5>
-          <p class="card-text">Autor</p>
+        <h5 class="card-title">Lukáš Hanek</h5>
+          <p class="card-text">Redaktor</p>
         </div>
       </div>
     </div>
