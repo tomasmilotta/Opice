@@ -5,15 +5,6 @@
   if(!isset($_SESSION["login"])){
       header("location:index.php");
   }
-  if(isset($_SESSION['chyba'])){
-    if($_SESSION['chyba']==0){
-      echo "<script type='text/javascript'>alert('Úspěch!');</script>";
-      unset($_SESSION['chyba']);
-    }else{
-      echo "<script type='text/javascript'>alert('Chyba při nahrávání souboru!');</script>";
-      unset($_SESSION['chyba']);
-    }
-  }
   if(isset($_POST['submit'])) {
     $dotaz = 'SELECT COUNT(*) from clanky join users on clanky.clanek_autor = users.user_id where clanek_nazev = "'.$_POST['name'].'";';
     $login = $_SESSION['login'];
@@ -38,11 +29,11 @@
           session_start();
           $dotaz = 'insert into clanky (clanek_autor, clanek_nazev, clanek_obsah) values("'.$id.'","'.$nazev.'","'.$name.'");';
           mysqli_query($spojeni, $dotaz);
-          $_SESSION['chyba'] = 0;
+          $_SESSION["msg-good"]="Článek úspěšně přidán.";
           header("location:spravaClanku.php");
         }else{
           session_start();
-          $_SESSION['chyba'] = 1;
+          $_SESSION["msg-bad"]="Článek nebyl přidán.";
           header("location:pridatClanek.php");
         }
       }

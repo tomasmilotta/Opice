@@ -20,6 +20,7 @@
       $dotaz = 'update clanky set clanek_stav=3, clanek_zpravaRecenzenta = "'.$_POST["zprava"].'" where clanek_id = '.$_POST["id"].';';
     }
     if(mysqli_query($spojeni, $dotaz)){
+      $_SESSION["msg-good"]="Úspěšně vráceno autorovi.";
       header("location:spravaClanku.php");
     }
   }

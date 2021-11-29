@@ -109,7 +109,7 @@
       }
       if($role==3){
         if($radek['stav_id'] == 3){
-          echo '<td><a href="updateClanek.php?name='.$radek["clanek_nazev"].'">Reagovat</a></td>';
+          echo '<td><a href="updateClanek.php?name='.$radek["clanek_nazev"].'" class="btn">Reagovat</a></td>';
         }else{
           echo '<td>V pořádku</td>';
         }

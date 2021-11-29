@@ -36,6 +36,7 @@
             $dotaz = 'update users set user_name="'.$_GET["jmeno"].'", user_sname="'.$_GET["prijmeni"].'", user_login="'.$_GET["login"].'", user_email="'.$_GET["email"].'", user_role='.$_GET["role"].' where user_id='.$_GET["id"].';';
             $vysledek = mysqli_query($spojeni, $dotaz);
             if($vysledek){
+              $_SESSION["msg-good"]="Uživatel úspěšně upraven.";
               header("location:spravaUzivatelu.php");
             }else {
               echo '<script>alert("Chyba!");</script>';

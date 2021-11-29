@@ -22,16 +22,24 @@
   <?php
     $nazev = $_GET['name'];
    ?>
+   <h3 align=center>Reakce</h3>
+   <div class="d-flex justify-content-center mb-3">
+     <div class="d-inline-flex" id="reg">
   <form action="uploadClanek.php" method="post" enctype="multipart/form-data">
     <table>
       <tr>
-        <td>Název článku:</td><td><input type="text" name="name" value="<?php echo $nazev;?>" readonly></td>
+        <td>Název článku:</td><td><input type="text" name="name" value="<?php echo $nazev;?>" readonly class="form-control"></td>
       </tr>
       <tr>
-        <td>Nahrajte soubor:</td><td><input type="file" name="file" id="fileToUpload" accept=".doc, .docx, .pdf" onchange = "return fileValidation()" required></td>
+        <td>Nahrajte soubor:</td><td><input type="file" name="file" id="fileToUpload" accept=".doc, .docx, .pdf" onchange = "return fileValidation()" required class="form-control"></td>
       </tr>
       <tr>
-        <td colspan="2" align="center"><input style="width:90%;" type="submit" name="submit"></td>
+        <td colspan="2" align="center"><input style="width:90%;" type="submit" name="submit" id="reg-but"></td>
       </tr>
     </table>
   </form>
+     </div>
+   </div>
+ <?php
+ require "footer.php";
+  ?>
