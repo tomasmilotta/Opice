@@ -28,7 +28,7 @@
         <td>Název článku:</td><td><input type="text" name="name" value="<?php echo $nazev;?>" readonly></td>
       </tr>
       <tr>
-        <td>Nahrajde soubor:</td><td><input type="file" name="file" id="fileToUpload" accept=".doc, .docx, .pdf" onchange = "return fileValidation()" required></td>
+        <td>Nahrajte soubor:</td><td><input type="file" name="file" id="fileToUpload" accept=".doc, .docx, .pdf" onchange = "return fileValidation()" required></td>
       </tr>
       <tr>
         <td colspan="2" align="center"><input style="width:90%;" type="submit" name="submit"></td>
