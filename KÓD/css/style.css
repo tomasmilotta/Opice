@@ -1,11 +1,13 @@
 :root {
     --zelena: #00CC7A;
+    --hov:#7DE5BB;
   }
 
-body{
-    font-family: 'Cerebri Sans',sans-serif !important;
+#body{
+    /*font-family: 'Cerebri Sans',sans-serif !important;
     font-size: 1rem !important;
-    font-weight: 400 !important;
+    font-weight: 400 !important;*/
+    font-family: 'Roboto', sans-serif !important;
 }
 #navik{
     background-color: var(--zelena) !important;
@@ -15,6 +17,14 @@ body{
 {
     color: white !important;
     font-weight: 600 !important;
+}
+.nav-link:hover:not(#user):not(#unlog):not(#regi)
+{
+    border-bottom: 1px solid white !important;
+}
+#regi:hover
+{
+    color: var(--zelena) !important;
 }
 #user
 {
@@ -40,7 +50,7 @@ body{
 #log-but ,#unlog ,#reg-but
 {
     background-color: var(--zelena) !important;
-    border: 0px;
+    border: 2px solid var(--zelena);
     color: white !important;
     border-radius: 5px;
 }
@@ -70,6 +80,9 @@ input[type="color"]:focus,
     border-color: var(--zelena) !important;
     box-shadow: 0 1px 1px var(--zelena) inset, 0 0 8px var(--zelena) !important;
  }
+ .btn{
+    border: 2px solid var(--zelena) !important;
+ }
  .btn.active.focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn:active:focus, .btn:focus {
     outline: 0 !important;
 }
@@ -87,7 +100,7 @@ table {
 .sprava-tab a{
     text-decoration: none !important;
 }
-.sprava-tab .btn{
+.sprava-tab .btn, #add-btn{
     background-color: var(--zelena) !important;
     border: 0px;
     color: white !important;
@@ -100,12 +113,10 @@ table {
     border-radius: 15px;
 }
 .footer{
-    /*position: relative !important;*/
     width: 100% !important;
     color: white !important;
     padding-top: 10px !important;
     background-color: var(--zelena) !important;
-    /*bottom: 0 !important;*/
 }
 #madeby{
     text-align: center;
@@ -122,4 +133,13 @@ html, body {
 }
 .footer, .push {
   height: 85px;
+}
+#log-but:hover ,#unlog:hover ,#reg-but:hover,.btn:hover,#add-btn:hover{
+    background-color: white !important;
+    color: var(--zelena) !important;
+    border-color: var(--zelena) !important;
+    border: 2px solid !important;
+}
+#reg-but{
+    margin-top: 5px !important;
 }

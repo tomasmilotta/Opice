@@ -18,6 +18,41 @@
   }else{
     //header("location:spravaUzivatelu.php");
   }
+  if(isset($_GET["zmenit"])){
+    if($_GET["zmenit"]=="Změnit"){
+      $vzor = "/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/";
+      $email= $_GET["email"];
+      if(preg_match($vzor, $email)||$email==$email2){
+        $dotaz = "select count(*) from users where user_email='".$_GET["email"]."';";
+        $vysledek = mysqli_query($spojeni, $dotaz);
+        $radek = mysqli_fetch_assoc($vysledek);
+        $pocetEmail = $radek["count(*)"];
+        if($pocetEmail!=1||$email==$email2){
+          $dotaz = "select count(*) from users where user_login='".$_GET["login"]."';";
+          $vysledek = mysqli_query($spojeni, $dotaz);
+          $radek = mysqli_fetch_assoc($vysledek);
+          $pocetLogin = $radek["count(*)"];
+          if($pocetLogin!=1||$login==$_GET["login"]){
+            $dotaz = 'update users set user_name="'.$_GET["jmeno"].'", user_sname="'.$_GET["prijmeni"].'", user_login="'.$_GET["login"].'", user_email="'.$_GET["email"].'", user_role='.$_GET["role"].' where user_id='.$_GET["id"].';';
+            $vysledek = mysqli_query($spojeni, $dotaz);
+            if($vysledek){
+              header("location:spravaUzivatelu.php");
+            }else {
+              echo '<script>alert("Chyba!");</script>';
+            }
+          }else{
+            echo '<script>alert("Login se již používá!");</script>';
+          }
+        }else{
+          echo '<script>alert("E-mail se již používá!");</script>';
+        }
+      }else{
+        echo '<script>alert("Špatný formát e-mailu!");</script>';
+      }
+    }else if($_GET["zmenit"]=="Zpět"){
+      header("location:spravaUzivatelu.php");
+    }
+  }
  ?>
  <h3 align="center">Úprava uživatele</h3>
  <form action="updateUzivatel.php" method="get">
@@ -63,43 +98,6 @@
       </div>
     </div>
  </form>
- <?php
- if(isset($_GET["zmenit"])){
-   if($_GET["zmenit"]=="Změnit"){
-     $vzor = "/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/";
-     $email= $_GET["email"];
-     if(preg_match($vzor, $email)||$email==$email2){
-       $dotaz = "select count(*) from users where user_email='".$_GET["email"]."';";
-       $vysledek = mysqli_query($spojeni, $dotaz);
-       $radek = mysqli_fetch_assoc($vysledek);
-       $pocetEmail = $radek["count(*)"];
-       if($pocetEmail!=1||$email==$email2){
-         $dotaz = "select count(*) from users where user_login='".$_GET["login"]."';";
-         $vysledek = mysqli_query($spojeni, $dotaz);
-         $radek = mysqli_fetch_assoc($vysledek);
-         $pocetLogin = $radek["count(*)"];
-         if($pocetLogin!=1||$login==$_GET["login"]){
-           $dotaz = 'update users set user_name="'.$_GET["jmeno"].'", user_sname="'.$_GET["prijmeni"].'", user_login="'.$_GET["login"].'", user_email="'.$_GET["email"].'", user_role='.$_GET["role"].' where user_id='.$_GET["id"].';';
-           $vysledek = mysqli_query($spojeni, $dotaz);
-           if($vysledek){
-             header("location:spravaUzivatelu.php");
-           }else {
-             echo '<script>alert("Chyba!");</script>';
-           }
-         }else{
-           echo '<script>alert("Login se již používá!");</script>';
-         }
-       }else{
-         echo '<script>alert("E-mail se již používá!");</script>';
-       }
-     }else{
-       echo '<script>alert("Špatný formát e-mailu!");</script>';
-     }
-   }else if($_GET["zmenit"]=="Zpět"){
-     header("location:spravaUzivatelu.php");
-   }
- }
-  ?>
  <?php
   require "footer.php";
  ?>
