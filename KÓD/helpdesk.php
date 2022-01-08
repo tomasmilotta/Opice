@@ -17,7 +17,6 @@ function ValidateEmail() {
 </script>
 <?php
   if(!isset($_SESSION["login"])){
-    echo '<a href="forgetName.php">Zapomenuté přihlašovací jméno</a><br>' ;
     echo '<a href="forgotPasswd.php">Zapomenuté heslo</a>' ;
   }
 ?>
