@@ -5,7 +5,7 @@
  <div class="container">
  <div id="ind">
   <p id="zl" class="text-center display-1">Zelené levo</p>
-  <p class="text-center lead">Naše redakce:</p>
+  <p class="text-center lead">Náš redakční tým:</p>
 </div>
   <div class="row justify-content-center">
     <div class="col-4 ">
@@ -57,7 +57,7 @@
     </div>
     <div class="col-4">
     <div class="card" >
-        <img src="img/hanek.jpg" class="card-img-top" alt="...">
+        <img src="img/hanek2.jpeg" class="card-img-top" alt="...">
         <div class="card-body">
         <h5 class="card-title">Lukáš Hanek</h5>
           <p class="card-text">Redaktor</p>
