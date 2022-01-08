@@ -34,6 +34,9 @@
         <li class="nav-item">
           <a class="nav-link" aria-current="page" href="clanky.php">Vydané články</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="helpdesk.php">Helpdesk</a>
+        </li>
         <?php
             if(isset($_SESSION["login"])){
               $role = $_SESSION["role"];
@@ -56,6 +59,7 @@
           $role = $_SESSION["role"];
           echo "<ul class='dropdown-menu' id='logged'>";
           echo '<li class="nav-item px-1 d-flex justify-content-center fw-bold">'.$_SESSION["name"].' '.$_SESSION["sname"].' </li><li class="nav-item px-1"> Login: '.$_SESSION["login"].' </li><li class="nav-item px-1"> Role: '.$_SESSION["roleName"].'</li>';
+          echo '<li class="nav-item  d-flex justify-content-center py-2"><a id="unlog" class="nav-link black-text btn fw-bold btn-outline-light" href="profile.php" role="button">Můj profil</li></a>';
           echo '<li class="nav-item  d-flex justify-content-center py-2"><a id="unlog" class="nav-link black-text btn fw-bold btn-outline-light" href="logout.php" role="button">Odhlásit se</li></a>';
 
         }else{
@@ -80,7 +84,7 @@
             <div class="d-flex justify-content-center">
                   <div class="alert alert-danger" role="alert">
                   '.$_SESSION["msg-bad"].'
-                  </div>      
+                  </div>
                 </div>
             ';
             $_SESSION['msg-bad']=NULL;
@@ -90,12 +94,9 @@
             <div class="d-flex justify-content-center">
                   <div class="alert alert-success" role="alert">
                   '.$_SESSION["msg-good"].'
-                  </div>      
+                  </div>
                 </div>
             ';
             $_SESSION['msg-good']=NULL;
           }
-?>   
-
-
-
+?>
