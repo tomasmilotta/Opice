@@ -21,8 +21,22 @@
       $dotaz = 'update users set user_passwd="'.$heslo.'" where user_id='.$_POST["id"];
       $vysledek = mysqli_query($spojeni, $dotaz);
       if($vysledek){
+        $dotaz = 'select user_email, user_login from users where user_id='.$_POST["id"];
+        echo $dotaz;
+        $vysledek = mysqli_query($spojeni, $dotaz);
+        $radek = mysqli_fetch_assoc($vysledek);
+        $email = $radek["user_email"];
+        $login = $radek["user_login"];
+        $subject = "Obnovení hesla";
+        $msg = "Heslo k Vašemu účtu s loginem <b>".$login."</b> bylo obnoveno na <b>1234</b>.";
+        $headers  = 'MIME-Version: 1.0' . "\r\n";
+        $headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
+        $headers .= "From: <admin@broz.lol>"."\r\n";
         $_SESSION["msg-good"]="Heslo bylo úspěšně změněno na '1234'.";
-        header("location:spravaUzivatelu.php");
+        if(mail($email,$subject,$msg,$headers)){
+          header("location:spravaUzivatelu.php");
+        }
+        //header("location:spravaUzivatelu.php");
       }
     }else if($_POST["reset"]=="Ne"){
       header("location:spravaUzivatelu.php");
