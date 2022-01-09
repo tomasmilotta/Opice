@@ -2,22 +2,28 @@
   require "header.php";
   require "connectDB.php";
 ?>
+
+<h1 align="center">Změna hesla</h1>
+<div class="d-flex justify-content-center mb-3">
+     <div class="d-inline-flex" id="reg">
 <form action="changePswd.php" method="post">
   <table>
     <tr>
-      <td>Aktuální heslo:</td><td><input type="password" name="oldpass"></td>
+      <td>Aktuální heslo:</td><td><input type="password" name="oldpass" class="form-control"></td>
     </tr>
     <tr>
-      <td>Nové heslo:</td><td><input type="password" name="pass1"></td>
+      <td>Nové heslo:</td><td><input type="password" name="pass1" class="form-control"></td>
     </tr>
     <tr>
-      <td>Nové heslo znovu:</td><td><input type="password" name="pass2"></td>
+      <td>Nové heslo znovu:</td><td><input type="password" name="pass2" class="form-control"></td>
     </tr>
     <tr>
       <td colspan="2" align="center"><input type="submit" name="zmenit" value="Změnit" id="reg-but">&nbsp;<input type="submit" name="zmenit" value="Zpět" id="reg-but"></td>
     </tr>
   </table>
 </form>
+</div>
+</div>
 <?php
   if(isset($_POST["zmenit"])){
     if($_POST["zmenit"]=="Změnit"){

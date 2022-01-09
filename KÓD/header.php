@@ -52,9 +52,16 @@
         ?>
       </ul>
         <ul class="navbar-nav">
-        <li class="nav-item dropstart">
-          <img class="nav-link dropdown-toggle" id="user"  data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false" src="img/user.png" height="58">
+        <li class="nav-item dropstart">        
           <?php
+          if(isset($_SESSION["login"])){
+          if(file_exists("img/users/".$_SESSION["login"])){
+            echo '<img class="nav-link dropdown-toggle" id="user" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false" src="img/users/'.$_SESSION["login"].'/avatar.jpg" height="64" width="64" style="border-radius: 50%;border: 2px solid white;padding:0">';
+          }else{
+            echo '<img class="nav-link dropdown-toggle" id="user"  data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false" src="img/user.png" height="58">';
+          }}else{
+            echo '<img class="nav-link dropdown-toggle" id="user"  data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false" src="img/user.png" height="58">';
+          }
         if(isset($_SESSION["login"])){
           $role = $_SESSION["role"];
           echo "<ul class='dropdown-menu' id='logged'>";

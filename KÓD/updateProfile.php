@@ -15,25 +15,36 @@
        }
   }
  </script>
-<form action="updateProfile.php" method="post" enctype="multipart/form-data">
+<h3 align="center">Úprava profilu</h3>
+
+<div class="d-flex justify-content-center mb-3">
+     <div class="d-inline-flex" id="reg">
+
   <table>
+  <form action="updateProfile.php" method="post" enctype="multipart/form-data">
     <tr>
-      <td>Jméno:</td><td><input type="text" name="name" value="<?php echo $_SESSION["name"];?>"></td>
+      <td>Jméno:</td><td><input type="text" name="name" value="<?php echo $_SESSION["name"];?>" class="form-control"></td>
     </tr>
     <tr>
-      <td>Příjmení:</td><td><input type="text" name="sname" value="<?php echo $_SESSION["sname"];?>"></td>
+      <td>Příjmení:</td><td><input type="text" name="sname" value="<?php echo $_SESSION["sname"];?>" class="form-control"></td>
     </tr>
     <tr>
-      <td>E-mail:</td><td><input type="email" name="email" value="<?php echo $_SESSION["email"];?>"></td>
+      <td>E-mail:</td><td><input type="email" name="email" value="<?php echo $_SESSION["email"];?>" class="form-control"></td>
     </tr>
     <tr>
       <td>Avatar:</td><td><input type="file" name="file" id="fileToUpload" accept=".jpg, .jpeg" onchange = "return fileValidation()" required class="form-control"></td>
     </tr>
     <tr>
-      <td colspan="2" align="center"><input type="submit" name="submit" value="Změnit" id="reg-but">&nbsp;<a href="profile.php" id="reg-but">Zpět</a></td>
+      <td colspan="2" align="center"><input type="submit" name="submit" value="Změnit" id="reg-but"></td>
+    </tr>
+    </form>
+    <tr align="center">
+    <td colspan="2"><a href="profile.php"><button id="reg-but">Zpět</button></a></td>
     </tr>
   </table>
-</form>
+
+</div>
+</div>
 <?php
   if(isset($_POST['submit'])){
     $vzor = "/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/";

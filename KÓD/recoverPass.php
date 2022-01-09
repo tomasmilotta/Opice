@@ -24,23 +24,29 @@
     $("#pass1").keyup(checkPasswordMatch);
  });
  </script>
+<h1 align="center">Obnova hesla</h1>
+<div class="d-flex justify-content-center mb-3">
+     <div class="d-inline-flex" id="reg">
  <form action="recoverPass.php" method="get">
   <table>
     <tr>
-      <td>Nové heslo:</td><td> <input type="password" name="pass1" id="pass1"> </td>
+      <td>Nové heslo: </td><td> <input type="password" name="pass1" id="pass1" class="form-control"> </td>
     </tr>
     <tr>
-      <td>Nové heslo znovu:</td><td> <input type="password" name="pass2" id="pass2"> </td>
+      <td>Nové heslo znovu: </td><td> <input type="password" name="pass2" id="pass2" class="form-control"> </td>
     </tr>
     <tr>
-      <td colspan="2"><div id="stav" style="color:red">  </div></td>
+      <td colspan="2" align="center"><div id="stav" style="color:red">  </div></td>
     </tr>
     <tr>
-      <td colspan="2"> <input type="submit" name="submit"> </td>
+      <td colspan="2" align="center"> <input type="submit" name="submit" id="reg-but" value="Změnit"> </td>
     </tr>
   </table>
   <input type="hidden" name="id" value= <?php echo $_GET["id"]?>> <input type="hidden" name="pass" value="<?php echo $_GET["pass"]?>">
  </form>
+ </div>
+</div>
+
  <?php
  if(isset($_GET["submit"])){
    if($_GET["pass1"]==$_GET["pass2"] && $_GET["pass1"]!=""){

@@ -4,7 +4,7 @@
  ?>
  <div class="container">
  <div id="ind">
-  <p id="zl" class="text-center display-1">Zelené levo</p>
+  <p id="zl" class="text-center display-1">Zelené Levo</p>
   <p class="text-center lead">Náš redakční tým:</p>
 </div>
   <div class="row justify-content-center">

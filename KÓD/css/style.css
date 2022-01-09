@@ -158,3 +158,24 @@ html, body {
     border-bottom: 3px solid var(--zelena);
     border-bottom-width: 50% ;
 }
+.avatar{
+    width: 300px;
+    height: 300px;
+    border-radius: 15px;
+}
+.mini-avatar{
+    height: 64px;
+    width: 64px;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+.karta:hover{
+    background-color: white !important;
+    color: var(--zelena) !important;
+}
+.dwn-btn{
+    color: var(--zelena);
+}
+.dwn-btn:hover{
+    color: black;
+}
